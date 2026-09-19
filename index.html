@@ -133,7 +133,7 @@
     .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:13px}
     .footer-brand{display:flex;align-items:center;gap:9px;color:#E7F6F1;font-weight:700}.footer-brand img{width:24px;height:24px;background:#FFF;border-radius:7px;padding:3px}
     [dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] .phone-h{letter-spacing:0}
-    [dir="rtl"] .phone,[dir="rtl"] .float{direction:ltr}
+    [dir="rtl"] .phone,[dir="rtl"] .float{direction:rtl;text-align:right}
     [dir="rtl"] .phone{transform:rotate(5deg)}
     [dir="rtl"] .float.one{transform:rotate(-7deg)}[dir="rtl"] .float.two{transform:rotate(-6deg)}
     @media(max-width:1100px){.float.one{inset-inline-end:0}.float.two{inset-inline-start:0}.phone{width:258px}}
@@ -242,6 +242,58 @@
       .desktop-lower{gap:5px;margin-top:7px;grid-template-columns:1.2fr 1fr}.desktop-large-panel,.desktop-small-panel{padding:7px;min-height:92px;border-radius:7px}
       .desktop-large-panel>strong,.desktop-small-panel>strong{font-size:.44rem;margin-bottom:6px}.desktop-lines span{font-size:.37rem;padding:5px 0}.desktop-checklist span{font-size:.34rem;padding:6px 0}
       .desktop-gallery-tabs{gap:6px;margin-top:15px}.desk-tab{gap:4px;min-height:39px;padding:8px 3px;font-size:.66rem}.desk-tab>span:first-child{font-size:.75rem}
+    }
+
+    /* Arabic is a first-class RTL layout, including both download sections and
+       the localized HTML desktop/phone illustrations. Other languages stay LTR. */
+    html[dir="rtl"] body{direction:rtl;text-align:right}
+    html[dir="rtl"] .nav,
+    html[dir="rtl"] .navlinks,
+    html[dir="rtl"] .nav-actions,
+    html[dir="rtl"] .hero,
+    html[dir="rtl"] .download-top,
+    html[dir="rtl"] .trust-row,
+    html[dir="rtl"] .features,
+    html[dir="rtl"] .steps,
+    html[dir="rtl"] .windows-section-top,
+    html[dir="rtl"] .windows-download-container,
+    html[dir="rtl"] .pc-points,
+    html[dir="rtl"] .desktop-titleline,
+    html[dir="rtl"] .desktop-gallery-tabs,
+    html[dir="rtl"] .final-inner,
+    html[dir="rtl"] .footer-inner{direction:rtl}
+    html[dir="rtl"] .hero-copy,
+    html[dir="rtl"] .download,
+    html[dir="rtl"] .windows-section-copy,
+    html[dir="rtl"] .section-head,
+    html[dir="rtl"] .feature,
+    html[dir="rtl"] .step,
+    html[dir="rtl"] .windows-install,
+    html[dir="rtl"] .windows-download-container .download,
+    html[dir="rtl"] .phone,
+    html[dir="rtl"] .float{direction:rtl;text-align:right}
+    html[dir="rtl"] .phone .phone-app,
+    html[dir="rtl"] .phone .phone-top,
+    html[dir="rtl"] .phone .phone-home,
+    html[dir="rtl"] .phone .mini-row,
+    html[dir="rtl"] .float{direction:rtl}
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot){direction:rtl;text-align:right}
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-frame,
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-sidenav,
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-heading,
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-metrics,
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-lower{direction:rtl}
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-left{border-right:0;border-left:1px solid #E5EDE8}
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-sidebar-label{padding-left:0;padding-right:10px;letter-spacing:0}
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-topbar{direction:ltr}
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-metrics b,
+    html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-lines em{direction:ltr;unicode-bidi:isolate}
+    html[dir="rtl"] .secondary-link svg,
+    html[dir="rtl"] .final-cta svg{transform:scaleX(-1)}
+    html[dir="rtl"] .lang{direction:ltr;text-align:left}
+    html[dir="rtl"] .desktop-screen.has-screenshot{direction:ltr}
+    @media(max-width:620px){
+      html[dir="rtl"] .desktop-screen:not(.has-screenshot) .desktop-sidebar-label{padding-right:2px}
     }
   </style>
 </head>
@@ -831,6 +883,12 @@
       function loadDesignImage(scene){
         var current=++imageAttempt;
         imageContainer.classList.remove("has-screenshot");
+        if(language !== "en"){
+          imagePreview.onload=null;
+          imagePreview.onerror=null;
+          imagePreview.removeAttribute("src");
+          return;
+        }
         imagePreview.onload=function(){
           if (current!==imageAttempt) return;
           imagePreview.alt="Roomly Windows "+scene+" design concept";
@@ -853,6 +911,7 @@
       var localizedDesktopScenes={"fr":{"dashboard":["Bienvenue chez vous, Abdallah ✦","Votre espace partagé, simple à organiser.",["Dépenses du mois","Votre part à régler","Tâches en attente","Factures à venir"],"Dépenses récentes","Tâches de la semaine",["Courses","Électricité","Internet"]],"expenses":["Dépenses communes","Suivez les paiements et gardez des comptes clairs.",["Total dépensé","On vous doit","Vous devez","Dépenses réglées"],"Toutes les dépenses","Détails des dépenses",["Courses de la semaine","Électricité · septembre","Internet du foyer"]],"chores":["Tâches ménagères","Voyez quoi faire, par qui et pour quand.",["Total des tâches","Vos tâches","Terminées","À venir"],"Tableau des tâches","En cours",["Ranger la cuisine","Acheter des sacs-poubelle","Passer l’aspirateur"],["Aujourd’hui","Aujourd’hui","Demain"]],"bills":["Gestion des factures","Toutes les dates, sommes et paiements au même endroit.",["Factures du mois","À payer cette semaine","Total estimé","Payées à temps"],"Toutes les factures","Septembre 2026",["Électricité","Loyer mensuel","Internet"]],"supplies":["Courses communes","Repérez les produits manquants et les stocks faibles.",["Produits suivis","Stock faible","À acheter","En stock"],"Inventaire du foyer","Liste de courses",["Liquide vaisselle","Papier toilette","Riz"],["2 flacons","1 paquet","2 kg"]],"members":["Colocataires et règles","Tout le monde est au courant des règles de la maison.",["Colocataires","Règles acceptées","Invitations en attente","Vos tâches"],"Votre colocation","Règles du foyer",["Abdallah","Lina","Youssef"],["Admin","Membre","Membre"]]},"tr":{"dashboard":["Evine hoş geldin, Abdallah ✦","Ortak yaşam alanınız artık daha düzenli.",["Bu ayki harcamalar","Ödenmemiş payın","Açık görevler","Yaklaşan faturalar"],"Son harcamalar","Bu haftaki görevler",["Market alışverişi","Elektrik","İnternet"]],"expenses":["Ortak harcamalar","Ödemeleri takip edin, hesabınız hep net olsun.",["Toplam harcama","Alacağın","Borcun","Ödenen harcamalar"],"Tüm harcamalar","Harcama ayrıntıları",["Haftalık market alışverişi","Elektrik · Eylül","Ev interneti"]],"chores":["Ev işleri","Neyin ne zaman ve kim tarafından yapılacağını görün.",["Toplam görev","Sana atanan","Tamamlanan","Yaklaşan"],"Haftalık görev panosu","Devam eden",["Mutfağı düzenle","Çöp poşeti al","Salonu süpür"],["Bugün","Bugün","Yarın"]],"bills":["Fatura yönetimi","Tarihleri, tutarları ve ödemeleri bir arada tutun.",["Bu ayın faturaları","Bu hafta ödenecek","Tahmini toplam","Zamanında ödendi"],"Tüm faturalar","Eylül 2026",["Elektrik","Aylık kira","İnternet"]],"supplies":["Ortak ev ihtiyaçları","Eksilen ve alınması gereken ürünleri görün.",["Takip edilen ürünler","Azalan ürünler","Alınacaklar","Stokta olanlar"],"Ev envanteri","Alışveriş listesi",["Bulaşık deterjanı","Tuvalet kâğıdı","Pirinç"],["2 şişe","1 paket","2 kg"]],"members":["Ev arkadaşları ve kurallar","Ortak evde herkes aynı bilgilere ulaşsın.",["Ev arkadaşları","Kabul edilen kurallar","Bekleyen davetler","Senin görevlerin"],"Ev arkadaşların","Ev kuralları",["Abdallah","Lina","Youssef"],["Yönetici","Üye","Üye"]]},"de":{"dashboard":["Willkommen zu Hause, Abdallah ✦","Eure WG, übersichtlich und einfach organisiert.",["Ausgaben diesen Monat","Dein offener Anteil","Offene Aufgaben","Anstehende Rechnungen"],"Letzte Ausgaben","Aufgaben dieser Woche",["Lebensmittel","Strom","Internet"]],"expenses":["Gemeinsame Ausgaben","Behaltet Zahlungen und offene Beträge im Blick.",["Gesamtausgaben","Du bekommst zurück","Du schuldest","Bezahlte Ausgaben"],"Alle Ausgaben","Ausgabendetails",["Wocheneinkauf","Strom · September","Internetanschluss"]],"chores":["Haushaltsaufgaben","Seht, was wann von wem erledigt werden muss.",["Alle Aufgaben","Dir zugewiesen","Erledigt","Anstehend"],"Wochenplan","In Bearbeitung",["Küche aufräumen","Müllbeutel kaufen","Wohnzimmer saugen"],["Heute","Heute","Morgen"]],"bills":["Rechnungsverwaltung","Termine, Beträge und Zahlungen an einem Ort.",["Rechnungen im Monat","Diese Woche fällig","Geschätzte Summe","Pünktlich bezahlt"],"Alle Rechnungen","September 2026",["Strom","Monatsmiete","Internet"]],"supplies":["Gemeinsame Vorräte","Seht, was knapp wird und was ihr einkaufen müsst.",["Erfasste Artikel","Fast aufgebraucht","Einkaufen","Auf Lager"],"Haushaltsvorräte","Einkaufsliste",["Spülmittel","Toilettenpapier","Reis"],["2 Flaschen","1 Packung","2 kg"]],"members":["Mitbewohner und Hausregeln","Alle in der WG sind auf dem gleichen Stand.",["Mitbewohner","Vereinbarte Regeln","Offene Einladungen","Deine Aufgaben"],"Eure WG","Hausregeln",["Abdallah","Lina","Youssef"],["Admin","Mitglied","Mitglied"]]},"ar":{"dashboard":["مرحبا بيك فالدار، عبد الله ✦","الشقة ديالكم منظمة وساهلة فالتسيير.",["مصاريف هاد الشهر","حصتك اللي باقي تخلص","المهام المفتوحة","الفواتير الجاية"],"آخر المصاريف","مهام هاد الأسبوع",["المشتريات","الضو","الإنترنت"]],"expenses":["المصاريف المشتركة","تابعو الأداءات وخليو الحسابات واضحة.",["مجموع المصاريف","فلوس خاصك ترجع","فلوس باقي عليك","مصاريف تخلصات"],"جميع المصاريف","تفاصيل المصاريف",["مشتريات الأسبوع","الضو · شتنبر","إنترنت الدار"]],"chores":["مهام الدار","شوفو شكون غيدير شنو وفاش.",["مجموع المهام","المهام ديالك","اللي تسالات","المهام الجاية"],"مهام الأسبوع","خدامين عليها",["ترتيب المطبخ","شراء أكياس الزبل","تنظيف الصالون"],["اليوم","اليوم","غدا"]],"bills":["تسيير الفواتير","خليو المواعيد والمبالغ والأداءات فبلاصة وحدة.",["فواتير هاد الشهر","خاصها تخلص هاد الأسبوع","المجموع المتوقع","تخلصات فالوقت"],"جميع الفواتير","شتنبر 2026",["الضو","الكراء الشهري","الإنترنت"]],"supplies":["مستلزمات الدار","تابعو شنو خاص الدار وشنو قرب يسالي.",["منتجات متبعة","قربات تسالي","خاص يتشرى","موجود فالدار"],"مخزون الدار","لائحة المشتريات",["صابون الماعن","ورق المرحاض","الروز"],["جوج قرعات","باكية وحدة","2 كيلو"]],"members":["السكان وقواعد الدار","كلشي متفاهم على القواعد ديال الشقة.",["السكان","قواعد متفق عليها","دعوات كتسنى","مهامك"],"سكان الدار","قواعد الدار",["عبد الله","لينا","يوسف"],["مسؤول","عضو","عضو"]]}};
       var activeDesktopScene="dashboard";
       var activeDesktopImage="dashboard";
+      var activeDesktopImageLanguage="en";
       var sideLinks=["dashboard","expenses","chores","bills","supplies","members"];
       function showDesktopScene(scene){
         if (!Object.prototype.hasOwnProperty.call(desktopScenes,scene)) return;
@@ -863,7 +922,7 @@
           data={title:localized[0],subtitle:localized[1],titles:localized[2],values:data.values,panel:localized[3],aside:localized[4],
             rows:data.rows.map(function(row,i){return [localized[5][i],localized[6] ? localized[6][i] : row[1]];})};
         }
-        if(activeDesktopImage!==scene){loadDesignImage(scene);activeDesktopImage=scene;}
+        if(activeDesktopImage!==scene || activeDesktopImageLanguage!==language){loadDesignImage(scene);activeDesktopImage=scene;activeDesktopImageLanguage=language;}
         document.getElementById("scene-title").textContent=data.title;
         document.getElementById("scene-subtitle").textContent=data.subtitle;
         for(var m=0;m<4;m++){
