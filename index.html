@@ -185,6 +185,9 @@
     .desktop-titleline h3{font-size:clamp(1.25rem,2vw,1.9rem);letter-spacing:-.035em;margin:8px 0 0;line-height:1.3}
     .pc-concept{padding:7px 10px;background:#D9EFE7;border:1px solid #BEE1D2;border-radius:8px;color:#2A7766;font-size:.65rem;letter-spacing:.06em;font-weight:800;white-space:nowrap}
     .desktop-screen{direction:ltr;background:#FFF;border:1px solid #CADFD5;border-radius:21px;box-shadow:0 28px 75px #1E594A21;overflow:hidden}
+    .desktop-real-shot{display:none;width:100%;height:auto;aspect-ratio:1520/960;object-fit:contain;background:#FFF}
+    .desktop-screen.has-screenshot .desktop-real-shot{display:block}
+    .desktop-screen.has-screenshot .desktop-topbar,.desktop-screen.has-screenshot .desktop-frame{display:none}
     .desktop-topbar{height:36px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #E8EFEB;background:#FDFDFC;color:#5C766F;font-size:.67rem;font-weight:800}
     .desktop-dots{display:flex;gap:5px}.desktop-dots i{display:block;width:7px;height:7px;border-radius:50%;background:#C3D7CD}
     .desktop-topbar-end{font-size:.8rem;letter-spacing:2px;color:#849C93}
@@ -323,7 +326,8 @@
         </div>
         <div class="desktop-showcase">
           <div class="desktop-titleline"><div><span class="desktop-overline" data-i18n="pcGalleryKicker">A closer look</span><h3 data-i18n="pcGalleryTitle">Your shared home, on one screen.</h3></div><span class="pc-concept" data-i18n="pcConcept">DESIGN CONCEPT</span></div>
-          <div class="desktop-screen" aria-label="Desktop interface illustration">
+          <div class="desktop-screen" id="desktop-screen" aria-label="Desktop concept preview">
+            <img id="desktop-real-shot" class="desktop-real-shot" alt="Roomly Windows dashboard design concept" width="1520" height="960" loading="lazy">
             <div class="desktop-topbar"><span class="desktop-dots"><i></i><i></i><i></i></span><span>Roomly</span><span class="desktop-topbar-end">— &nbsp; □ &nbsp; ×</span></div>
             <div class="desktop-frame">
               <div class="desktop-left"><span class="desktop-brand"><img src="./assets/roomly-mark.svg" width="24" height="24" alt=""><b>Roomly</b></span><span class="desktop-sidebar-label">WORKSPACE</span><div class="desktop-sidenav"><span class="active">▦ &nbsp; Dashboard</span><span>▤ &nbsp; Expenses</span><span>✓ &nbsp; Chores</span><span>▥ &nbsp; Bills</span><span>▧ &nbsp; Shared supplies</span><span>♙ &nbsp; Members & rules</span></div><div class="desktop-user">A &nbsp; Abdallah</div></div>
@@ -517,6 +521,23 @@
         if (!available) event.preventDefault();
       });
       winButton.addEventListener("click",function(event){if(!winAvailable)event.preventDefault();});
+      // Actual design-concept screenshots can be supplied as public assets/windows/*.webp.
+      // Keep the illustrated preview visible whenever an image is missing.
+      var imagePreview=document.getElementById("desktop-real-shot");
+      var imageContainer=document.getElementById("desktop-screen");
+      var imageAttempt=0;
+      function loadDesignImage(scene){
+        var current=++imageAttempt;
+        imageContainer.classList.remove("has-screenshot");
+        imagePreview.onload=function(){
+          if (current!==imageAttempt) return;
+          imagePreview.alt="Roomly Windows "+scene+" design concept";
+          imageContainer.classList.add("has-screenshot");
+        };
+        imagePreview.onerror=function(){if (current===imageAttempt) imageContainer.classList.remove("has-screenshot");};
+        imagePreview.src="./assets/windows/"+scene+".webp";
+      }
+      loadDesignImage("dashboard");
       // Preview-only data: this is not connected to any roommate account.
       var desktopScenes = {
         dashboard:{title:"Welcome home, Abdallah ✦",subtitle:"Your shared space, organized and easy to manage.",titles:["This month's expenses","Your unsettled share","Open chores","Upcoming bills"],values:["€320.50","€80.13","05","02"],panel:"Recent expenses",aside:"Chores this week",rows:[["Groceries","€42.30"],["Electricity","€75.00"],["Internet","€30.00"]]},
@@ -530,6 +551,7 @@
       function showDesktopScene(scene){
         if (!Object.prototype.hasOwnProperty.call(desktopScenes,scene)) return;
         var data=desktopScenes[scene];
+        loadDesignImage(scene);
         document.getElementById("scene-title").textContent=data.title;
         document.getElementById("scene-subtitle").textContent=data.subtitle;
         for(var m=0;m<4;m++){
