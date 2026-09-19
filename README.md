@@ -24,6 +24,21 @@ If the APK was not uploaded or the GitHub API is unavailable, the Android downlo
 
 **Important:** The APK will be publicly downloadable by anyone with the URL. The site is not an app store, and downloading a later version still requires the recipient to install it manually. Updates over an existing installation require a compatible package ID, signing key, and increasing version code.
 
+## Add the six Windows design screenshots
+
+The Windows section already knows how to display the following optional WebP design-concept images:
+
+```text
+assets/windows/dashboard.webp
+assets/windows/expenses.webp
+assets/windows/chores.webp
+assets/windows/bills.webp
+assets/windows/supplies.webp
+assets/windows/members.webp
+```
+
+Each of the six preview tabs selects the corresponding screenshot. If an image is not yet present, the website shows its built-in interactive illustrative desktop preview instead of a broken image. The screenshots are **concept images with illustrative household data, not images of a released Windows application**. The six optimized image files are available separately as `Roomly_Windows_Website_Images.zip` (not committed to this repository yet).
+
 ## Publish the Windows desktop build
 
 1. Build and test the native Flutter Windows edition on a Windows computer (for example, `flutter build windows --release` after Windows desktop support and all platform-specific dependencies are configured). A Windows edition requires its own desktop UI and platform testing; this website does not build the app itself.
