@@ -211,7 +211,7 @@
   <header class="top">
     <nav class="shell nav" aria-label="Main navigation">
       <a class="brand" href="./" aria-label="Roomly — home"><img src="./assets/roomly-logo-horizontal.svg" width="183" height="46" alt="Roomly — Live together better."></a>
-      <div class="navlinks"><a href="#features" data-i18n="navFeatures">Features</a><a href="#how-it-works" data-i18n="navHow">How to install</a></div>
+      <div class="navlinks"><a href="#features" data-i18n="navFeatures">Features</a><a href="#how-it-works" data-i18n="navHow">How to install</a><a href="#windows" data-i18n="navWindows">Windows</a></div>
       <div class="nav-actions">
         <button class="lang" type="button" id="language" aria-label="Switch language" aria-pressed="false">العربية ↗</button>
         <a class="nav-cta" href="#download-panel" data-i18n="navDownload">Get Roomly</a>
@@ -234,17 +234,7 @@
           <p class="download-status" id="release-status" role="status" aria-live="polite" data-i18n="checking">Checking Android download availability…</p>
           <a class="secondary-link" href="https://github.com/abdallahkhayroun00-crypto/Roomly-download/releases" target="_blank" rel="noopener noreferrer"><span data-i18n="viewReleases">View releases on GitHub</span><svg aria-hidden="true" width="15" height="15"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="download windows-panel" id="windows-download-panel">
-          <div class="download-top">
-            <span class="windows-icon"><svg aria-hidden="true"><use href="#i-windows"/></svg></span>
-            <div><p class="download-title" data-i18n="windowsTitle">Roomly for Windows</p><p class="download-subtitle" data-i18n="windowsSubtitle">Your home, on your desktop</p></div>
-            <span class="version" id="windows-version">Not released</span>
-          </div>
-          <a class="primary-btn" id="windows-download" aria-disabled="true" tabindex="-1" aria-describedby="windows-status"><svg aria-hidden="true"><use href="#i-download"/></svg><span id="windows-button-label">Coming soon</span></a>
-          <p class="download-status" id="windows-status" role="status" aria-live="polite">Checking Windows download availability…</p>
-          <a class="secondary-link" href="https://github.com/abdallahkhayroun00-crypto/Roomly-download/releases" target="_blank" rel="noopener noreferrer"><span data-i18n="windowsReleases">View Windows releases on GitHub</span><svg aria-hidden="true" width="15" height="15"><use href="#i-arrow"/></svg></a>
-        </div>
-        <div class="trust-row"><span><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="trustAndroid">Android + Windows</span></span><span><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="trustPreview">Early-access preview</span></span></div>
+        <div class="trust-row"><span><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="trustAndroid">Made for Android</span></span><span><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="trustPreview">Early-access preview</span></span></div>
       </div>
       <div class="showcase" aria-label="Illustrative preview of a Roomly dashboard">
         <div class="stage-floor" aria-hidden="true"></div>
@@ -266,21 +256,50 @@
         <p class="mock-note" data-i18n="mockNote">Concept illustration · Not an actual app screenshot</p>
       </div>
     </section></div>
-    <section class="shell windows-spotlight" id="windows" aria-labelledby="windows-title">
-      <div class="windows-copy">
-        <p class="section-kicker" data-i18n="pcKicker">Your space, a bigger view</p>
-        <h2 id="windows-title" data-i18n="pcTitle">Meet Roomly for Windows.</h2>
-        <p data-i18n="pcBody">A desktop-first layout for your shared home: quick access to tasks, expenses, bills and housemates, with room to see more at once. The Windows download will activate when a real build is published.</p>
-        <a href="#windows-download-panel" data-i18n="pcAction">Check Windows availability ↑</a>
-      </div>
-      <div class="pc-preview" aria-label="Concept illustration of a Roomly desktop dashboard">
-        <div class="pc-top" aria-hidden="true"><i></i><i></i><i></i><b>Roomly</b></div>
-        <div class="pc-body" aria-hidden="true">
-          <div class="pc-side"><strong>Roomly</strong><span class="selected">⌂ Overview</span><span>✓ Tasks</span><span>▤ Expenses</span><span>▥ Bills</span><span>◫ Members</span></div>
-          <div class="pc-content"><h3>Our home</h3><p>Everything you share, organized.</p><div class="pc-stats"><div><small>Tasks done</small><b>8 / 10</b></div><div><small>Expenses</small><b>3</b></div><div><small>Housemates</small><b>4</b></div></div><div class="pc-list"><div><strong>Today's tasks</strong><b>See all</b></div><div><span>✓ Clean the kitchen</span><b>Done</b></div><div><span>○ Take out recycling</span><b>Today</b></div></div></div>
+    <section class="windows-destination" id="windows" aria-labelledby="windows-title">
+      <div class="shell">
+        <div class="windows-section-top">
+          <div class="windows-section-copy">
+            <span class="pc-eyebrow"><svg aria-hidden="true" width="18" height="18"><use href="#i-windows"/></svg><span data-i18n="pcKicker">ROOMLY FOR WINDOWS</span></span>
+            <h2 id="windows-title"><span data-i18n="pcTitle1">More room for</span><br><span class="windows-highlight" data-i18n="pcTitle2">living together.</span></h2>
+            <p data-i18n="pcBody">Keep household tasks, shared expenses and bills in view with a spacious desktop workspace designed for mouse and keyboard.</p>
+            <div class="pc-points"><span>✓ <span data-i18n="pcPoint1">Room for the details</span></span><span>✓ <span data-i18n="pcPoint2">A clearer desktop view</span></span></div>
+          </div>
+          <div class="windows-download-container">
+            <div class="download windows-panel" id="windows-download-panel">
+          <div class="download-top">
+            <span class="windows-icon"><svg aria-hidden="true"><use href="#i-windows"/></svg></span>
+            <div><p class="download-title" data-i18n="windowsTitle">Roomly for Windows</p><p class="download-subtitle" data-i18n="windowsSubtitle">Your home, on your desktop</p></div>
+            <span class="version" id="windows-version">Not released</span>
+          </div>
+          <a class="primary-btn" id="windows-download" aria-disabled="true" tabindex="-1" aria-describedby="windows-status"><svg aria-hidden="true"><use href="#i-download"/></svg><span id="windows-button-label">Coming soon</span></a>
+          <p class="download-status" id="windows-status" role="status" aria-live="polite">Checking Windows download availability…</p>
+          <a class="secondary-link" href="https://github.com/abdallahkhayroun00-crypto/Roomly-download/releases" target="_blank" rel="noopener noreferrer"><span data-i18n="windowsReleases">View Windows releases on GitHub</span><svg aria-hidden="true" width="15" height="15"><use href="#i-arrow"/></svg></a>
+        </div>
+          </div>
+        </div>
+        <div class="desktop-showcase">
+          <div class="desktop-titleline"><div><span class="desktop-overline" data-i18n="pcGalleryKicker">A closer look</span><h3 data-i18n="pcGalleryTitle">Your shared home, on one screen.</h3></div><span class="pc-concept" data-i18n="pcConcept">DESIGN CONCEPT</span></div>
+          <div class="desktop-screen" aria-label="Desktop interface illustration">
+            <div class="desktop-topbar"><span class="desktop-dots"><i></i><i></i><i></i></span><span>Roomly</span><span class="desktop-topbar-end">— &nbsp; □ &nbsp; ×</span></div>
+            <div class="desktop-frame">
+              <div class="desktop-left"><span class="desktop-brand"><img src="./assets/roomly-mark.svg" width="24" height="24" alt=""><b>Roomly</b></span><span class="desktop-sidebar-label">WORKSPACE</span><div class="desktop-sidenav"><span class="active">▦ &nbsp; Dashboard</span><span>▤ &nbsp; Expenses</span><span>✓ &nbsp; Chores</span><span>▥ &nbsp; Bills</span><span>▧ &nbsp; Shared supplies</span><span>♙ &nbsp; Members & rules</span></div><div class="desktop-user">A &nbsp; Abdallah</div></div>
+              <div class="desktop-right"><div class="desktop-search">⌕ &nbsp; Search anything... <span>Ctrl + K</span></div><div class="desktop-body">
+              <div class="desktop-heading"><div><small data-i18n="pcSample">ROOMLY · SAMPLE DATA</small><h4 id="scene-title">Welcome home, Abdallah ✦</h4><p id="scene-subtitle">Your shared space, organized and easy to manage.</p></div><span>+ &nbsp; Add new</span></div>
+              <div class="desktop-metrics"><div><small id="metric-1-title">This month's expenses</small><b id="metric-1-val">€320.50</b></div><div><small id="metric-2-title">Your unsettled share</small><b id="metric-2-val">€80.13</b></div><div><small id="metric-3-title">Open chores</small><b id="metric-3-val">05</b></div><div><small id="metric-4-title">Upcoming bills</small><b id="metric-4-val">02</b></div></div>
+              <div class="desktop-lower"><div class="desktop-large-panel"><strong id="panel-title">Recent expenses</strong><div class="desktop-lines"><span><b id="line-1">Groceries</b><em>€42.30</em></span><span><b id="line-2">Electricity</b><em>€75.00</em></span><span><b id="line-3">Internet</b><em>€30.00</em></span></div></div><div class="desktop-small-panel"><strong id="aside-title">Chores this week</strong><div class="desktop-checklist"><span>✓ &nbsp; Clean the kitchen</span><span>✓ &nbsp; Take out the trash</span><span>○ &nbsp; Vacuum living room</span></div></div></div>
+              </div></div>
+            </div>
+          </div>
+          <div class="desktop-gallery-tabs" role="group" aria-label="Desktop preview pages"><button type="button" class="desk-tab active" data-scene="dashboard" aria-pressed="true"><span>▦</span><span data-i18n="tabDashboard">Dashboard</span></button>
+          <button type="button" class="desk-tab" data-scene="expenses" aria-pressed="false"><span>▤</span><span data-i18n="tabExpenses">Expenses</span></button>
+          <button type="button" class="desk-tab" data-scene="chores" aria-pressed="false"><span>✓</span><span data-i18n="tabChores">Chores</span></button>
+          <button type="button" class="desk-tab" data-scene="bills" aria-pressed="false"><span>▥</span><span data-i18n="tabBills">Bills</span></button>
+          <button type="button" class="desk-tab" data-scene="supplies" aria-pressed="false"><span>▧</span><span data-i18n="tabSupplies">Supplies</span></button>
+          <button type="button" class="desk-tab" data-scene="members" aria-pressed="false"><span>♙</span><span data-i18n="tabMembers">Members</span></button></div>
+          <p class="pc-disclaimer" data-i18n="pcNote">Interactive desktop design concept · Sample data, not an actual app screenshot</p>
         </div>
       </div>
-      <p class="pc-note" data-i18n="pcNote">Concept illustration · Not an actual app screenshot</p>
     </section>
     <section class="shell features-section" id="features" aria-labelledby="features-title">
       <div class="section-head"><div><p class="section-kicker" data-i18n="featuresKicker">A calmer way to share</p><h2 id="features-title" data-i18n="featuresTitle">The little things, sorted.</h2></div><p class="section-desc" data-i18n="featuresSub">Everything that keeps your shared home running, together in one friendly space.</p></div>
