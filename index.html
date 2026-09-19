@@ -8,7 +8,12 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Roomly — Live together better.">
   <meta property="og:description" content="Your shared home, beautifully organized. Roomly for Android and Windows.">
-  <meta property="og:image" content="https://abdallahkhayroun00-crypto.github.io/Roomly-download/assets/roomly-mark.svg">
+  <meta property="og:image" content="https://abdallahkhayroun00-crypto.github.io/Roomly-download/assets/roomly-share-card.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="420">
+<meta property="og:image:alt" content="Roomly — Live together better. Official website.">
+<meta name="twitter:image" content="https://abdallahkhayroun00-crypto.github.io/Roomly-download/assets/roomly-share-card.png">
   <meta property="og:url" content="https://abdallahkhayroun00-crypto.github.io/Roomly-download/">
   <meta name="color-scheme" content="light">
   <link rel="icon" type="image/svg+xml" href="./assets/roomly-mark.svg">
@@ -1041,6 +1046,8 @@ html[dir="rtl"] .release-notes,html[dir="rtl"] .updates-card,html[dir="rtl"] .up
         language = langSelect.value;
         render();
       });
+      var initialLang=new URLSearchParams(window.location.search).get("lang");
+      if(initialLang && Object.prototype.hasOwnProperty.call(copy,initialLang))language=initialLang;
       document.getElementById("year").textContent = String(new Date().getFullYear());
       render();
       fetch(repoApi, {headers:{"Accept":"application/vnd.github+json"}})
