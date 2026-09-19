@@ -141,6 +141,9 @@
     .step-number{display:inline-grid;place-items:center;border-radius:12px;background:#DDF4EC;color:#0D776A;width:37px;height:37px;font-size:.86rem;font-weight:800}
     .step h3{font-size:.94rem;margin:17px 0 8px}.step p{color:var(--muted);font-size:.8rem;line-height:1.78;margin:0}
     .steps-foot{font-size:.76rem;color:var(--muted);text-align:center;margin:23px 0 0}
+    .windows-install{margin-top:25px;padding:22px 25px;border-radius:18px;border:1px solid #D0E2DC;background:#FFFFFFB5}
+    .windows-install h3{font-size:1rem;margin:0 0 8px}.windows-install p{font-size:.8rem;color:var(--muted);margin:0;line-height:1.8}
+    .windows-install a{display:inline-block;margin-top:12px;color:var(--dark);font-weight:700;font-size:.78rem;text-underline-offset:4px}
     .final{padding-block:69px;background:#123B37;color:white;position:relative;overflow:hidden}
     .final::after{content:"";position:absolute;pointer-events:none;width:350px;height:350px;background:#2CB1A122;border-radius:50%;inset-inline-end:-125px;top:-200px}
     .final-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:35px}
@@ -241,7 +244,7 @@
           <p class="download-status" id="windows-status" role="status" aria-live="polite">Checking Windows download availability…</p>
           <a class="secondary-link" href="https://github.com/abdallahkhayroun00-crypto/Roomly-download/releases" target="_blank" rel="noopener noreferrer"><span data-i18n="windowsReleases">View Windows releases on GitHub</span><svg aria-hidden="true" width="15" height="15"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="trust-row"><span><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="trustAndroid">Made for Android</span></span><span><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="trustPreview">Early-access preview</span></span></div>
+        <div class="trust-row"><span><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="trustAndroid">Android + Windows</span></span><span><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="trustPreview">Early-access preview</span></span></div>
       </div>
       <div class="showcase" aria-label="Illustrative preview of a Roomly dashboard">
         <div class="stage-floor" aria-hidden="true"></div>
@@ -296,10 +299,11 @@
           <article class="step"><span class="step-number">02</span><h3 data-i18n="s2title">Install on Android</h3><p data-i18n="s2body">Open the downloaded file. Your phone may ask you to allow installation from your browser.</p></article>
           <article class="step"><span class="step-number">03</span><h3 data-i18n="s3title">Get organized together</h3><p data-i18n="s3body">Open Roomly and start organizing your shared place with your roommates.</p></article>
         </div>
-        <p class="steps-foot" data-i18n="stepsFoot">Roomly is currently for Android. This is a download page, not an app store; updates require a new installation.</p>
+        <div class="windows-install"><h3 data-i18n="windowsInstallTitle">Installing on Windows</h3><p data-i18n="windowsInstallBody">When the desktop build is published, download the installer and run it. If it's a ZIP, extract the entire folder first, then run Roomly.exe from inside it. Keep the other files alongside the app.</p><a href="#windows-download-panel" data-i18n="windowsInstallAction">Windows download status ↑</a></div>
+        <p class="steps-foot" data-i18n="stepsFoot">Android: install the APK. Windows: download the installer or desktop ZIP when published. This page is not an app store.</p>
       </div>
     </section>
-    <section class="final" aria-labelledby="final-title"><div class="shell final-inner"><div><h2 id="final-title" data-i18n="finalTitle">Your home, on the same page.</h2><p data-i18n="finalBody">Download Roomly here as soon as the first Android build is ready.</p></div><a class="final-cta" href="#download-panel"><span data-i18n="finalButton">Back to download</span><svg aria-hidden="true" width="18" height="18"><use href="#i-arrow"/></svg></a></div></section>
+    <section class="final" aria-labelledby="final-title"><div class="shell final-inner"><div><h2 id="final-title" data-i18n="finalTitle">Your home, on the same page.</h2><p data-i18n="finalBody">Choose Android or Windows above. Download links activate only when a public build is available.</p></div><a class="final-cta" href="#download-panel"><span data-i18n="finalButton">Back to download</span><svg aria-hidden="true" width="18" height="18"><use href="#i-arrow"/></svg></a></div></section>
   </main>
   <footer><div class="shell footer-inner"><div class="footer-brand"><img src="./assets/roomly-mark.svg" alt="" width="24" height="24"><span>Roomly · Live together better.</span></div><span>© <span id="year">2026</span> Roomly.</span></div></footer>
   <script>
@@ -378,6 +382,9 @@
       };
       Object.assign(copy.en, {
         windowsTitle:"Roomly for Windows",windowsSubtitle:"Your home, on your desktop",
+        windowsInstallTitle:"Installing on Windows",
+        windowsInstallBody:"When the desktop build is published, download the installer and run it. If it's a ZIP, extract the entire folder first, then run Roomly.exe from inside it. Keep the other files alongside the app.",
+        windowsInstallAction:"Windows download status ↑",
         windowsReleases:"View Windows releases on GitHub",winPending:"Coming soon",winReady:"Download for Windows",
         winChecking:"Checking Windows download availability…",
         winNotReady:"The Windows desktop build hasn't been published yet. The download will appear here when it's ready.",
@@ -392,6 +399,9 @@
       });
       Object.assign(copy.ar, {
         windowsTitle:"Roomly لويندوز",windowsSubtitle:"داركم المنظمة، حتى فالحاسوب",
+        windowsInstallTitle:"تثبيت Roomly على ويندوز",
+        windowsInstallBody:"ملي تتنشر نسخة الحاسوب، حمّل ملف التثبيت وشغّلو. إلا كانت ZIP، فكّ الضغط على الملف كامل ومن بعد شغّل Roomly.exe من داخل المجلد. خلّي باقي الملفات مع التطبيق.",
+        windowsInstallAction:"حالة تحميل ويندوز ↑",
         windowsReleases:"شوف إصدارات ويندوز على GitHub",winPending:"قريباً",winReady:"تحميل Roomly لويندوز",
         winChecking:"كنتحققو واش نسخة ويندوز متوفرة…",
         winNotReady:"نسخة ويندوز للحاسوب مازال ما تنشراتش. ملي تكون واجدة غادي يبان رابط التحميل هنا.",
