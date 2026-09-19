@@ -504,6 +504,26 @@
         stepsFoot:"أندرويد: ثبّت APK. ويندوز: حمّل ملف التثبيت أو ZIP ملي يتنشر. هادي صفحة تحميل وماشي متجر تطبيقات.",
         finalBody:"اختار أندرويد أو ويندوز من الفوق. رابط التحميل كيتفعّل غير ملي تتنشر نسخة حقيقية."
       });
+      Object.assign(copy.en, {
+        navWindows:"Windows",pcKicker:"ROOMLY FOR WINDOWS",pcTitle1:"More room for",pcTitle2:"living together.",
+        pcBody:"Keep household tasks, shared expenses and bills in view with a spacious desktop workspace designed for mouse and keyboard.",
+        pcPoint1:"Room for the details",pcPoint2:"A clearer desktop view",pcGalleryKicker:"A closer look",
+        pcGalleryTitle:"Your shared home, on one screen.",pcConcept:"DESIGN CONCEPT",
+        pcSample:"ROOMLY · SAMPLE DATA",tabDashboard:"Dashboard",tabExpenses:"Expenses",tabChores:"Chores",
+        tabBills:"Bills",tabSupplies:"Supplies",tabMembers:"Members",
+        pcNote:"Interactive desktop design concept · Sample data, not an actual app screenshot",
+        trustAndroid:"Made for Android"
+      });
+      Object.assign(copy.ar, {
+        navWindows:"ويندوز",pcKicker:"ROOMLY لويندوز",pcTitle1:"مساحة أكثر",pcTitle2:"لحياة مشتركة أسهل.",
+        pcBody:"المهام والمصاريف والفواتير كاملين قدامك فواجهة واسعة، مصممة خصيصاً للحاسوب والماوس والكيبورد.",
+        pcPoint1:"كل التفاصيل فبلاصة وحدة",pcPoint2:"رؤية أوضح على الحاسوب",pcGalleryKicker:"شوف الواجهة",
+        pcGalleryTitle:"داركم كاملة على شاشة وحدة.",pcConcept:"تصوّر التصميم",
+        pcSample:"ROOMLY · بيانات توضيحية",tabDashboard:"الرئيسية",tabExpenses:"المصاريف",tabChores:"المهام",
+        tabBills:"الفواتير",tabSupplies:"مستلزمات الدار",tabMembers:"السكان",
+        pcNote:"تصوّر تفاعلي لواجهة الحاسوب ببيانات توضيحية · ماشي صورة حقيقية من نسخة منشورة",
+        trustAndroid:"مصمّم للأندرويد"
+      });
       function render() {
         document.documentElement.lang = language;
         document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
@@ -525,6 +545,39 @@
         if (!available) event.preventDefault();
       });
       winButton.addEventListener("click",function(event){if(!winAvailable)event.preventDefault();});
+      // Preview-only data: this is not connected to any roommate account.
+      var desktopScenes = {
+        dashboard:{title:"Welcome home, Abdallah ✦",subtitle:"Your shared space, organized and easy to manage.",titles:["This month's expenses","Your unsettled share","Open chores","Upcoming bills"],values:["€320.50","€80.13","05","02"],panel:"Recent expenses",aside:"Chores this week",rows:[["Groceries","€42.30"],["Electricity","€75.00"],["Internet","€30.00"]]},
+        expenses:{title:"Shared expenses",subtitle:"Follow every payment and keep the balance clear.",titles:["Total spent","You are owed","You owe","Settled expenses"],values:["€779.00","€58.20","€80.13","09 / 12"],panel:"All expenses",aside:"Expense details",rows:[["Groceries for the week","€42.30"],["Electricity · September","€75.00"],["Home internet","€30.00"]]},
+        chores:{title:"Home chores",subtitle:"See what needs doing, by whom and by when.",titles:["Total chores","Assigned to you","Completed","Upcoming"],values:["08","02","03","03"],panel:"Weekly task board",aside:"In progress",rows:[["Clean the kitchen","Today"],["Buy trash bags","Today"],["Vacuum living room","Tomorrow"]]},
+        bills:{title:"Bills manager",subtitle:"Keep dates, amounts and payments together.",titles:["Bills this month","Due this week","Estimated total","Paid on time"],values:["05","01","€755.00","04 / 05"],panel:"All bills",aside:"September 2026",rows:[["Electricity","€75.00"],["Monthly rent","€600.00"],["Internet","€30.00"]]},
+        supplies:{title:"Shared supplies",subtitle:"See what your home needs and what is running low.",titles:["Tracked items","Running low","Need to buy","In stock"],values:["18","04","03","11"],panel:"Household inventory",aside:"Shopping list",rows:[["Dish soap","2 bottles"],["Toilet paper","1 pack"],["Rice","2 kg"]]},
+        members:{title:"Members & house rules",subtitle:"Everyone on the same page, in one shared home.",titles:["Housemates","Agreed rules","Open invites","Your tasks"],values:["04","04","00","02"],panel:"Your household",aside:"House rules",rows:[["Abdallah","Admin"],["Lina","Member"],["Youssef","Member"]]}
+      };
+      var sideLinks=["dashboard","expenses","chores","bills","supplies","members"];
+      function showDesktopScene(scene){
+        if (!Object.prototype.hasOwnProperty.call(desktopScenes,scene)) return;
+        var data=desktopScenes[scene];
+        document.getElementById("scene-title").textContent=data.title;
+        document.getElementById("scene-subtitle").textContent=data.subtitle;
+        for(var m=0;m<4;m++){
+          document.getElementById("metric-"+(m+1)+"-title").textContent=data.titles[m];
+          document.getElementById("metric-"+(m+1)+"-val").textContent=data.values[m];
+        }
+        document.getElementById("panel-title").textContent=data.panel;
+        document.getElementById("aside-title").textContent=data.aside;
+        var rows=document.querySelectorAll(".desktop-lines span");
+        rows.forEach(function(row,i){row.querySelector("b").textContent=data.rows[i][0];row.querySelector("em").textContent=data.rows[i][1];});
+        document.querySelectorAll(".desk-tab").forEach(function(button){
+          var selected=button.getAttribute("data-scene")===scene;
+          button.classList.toggle("active",selected);
+          button.setAttribute("aria-pressed",selected?"true":"false");
+        });
+        document.querySelectorAll(".desktop-sidenav span").forEach(function(link,i){link.classList.toggle("active",sideLinks[i]===scene);});
+      }
+      document.querySelectorAll(".desk-tab").forEach(function(button){
+        button.addEventListener("click",function(){showDesktopScene(button.getAttribute("data-scene"));});
+      });
       langButton.addEventListener("click", function () {
         language = language === "en" ? "ar" : "en";
         render();
