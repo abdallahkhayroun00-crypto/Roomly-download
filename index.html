@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F5F1EA">
-  <meta name="description" content="Roomly helps roommates organize chores, shared expenses, bills, and shopping together. Discover Roomly for Android and download a test build when available.">
+  <meta name="description" content="Roomly helps roommates organize chores, shared expenses, bills, and shopping together. Discover Roomly for Android and Windows. Download a public build for your device when available.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Roomly — Live together better.">
-  <meta property="og:description" content="Your shared home, beautifully organized. Roomly for Android.">
+  <meta property="og:description" content="Your shared home, beautifully organized. Roomly for Android and Windows.">
   <meta property="og:image" content="https://abdallahkhayroun00-crypto.github.io/Roomly-download/assets/roomly-mark.svg">
   <meta property="og:url" content="https://abdallahkhayroun00-crypto.github.io/Roomly-download/">
   <meta name="color-scheme" content="light">
@@ -64,6 +64,33 @@
     .download-status::before{content:"";width:7px;height:7px;margin-top:6px;flex:none;border-radius:100px;background:var(--amber)}
     .secondary-link{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;color:var(--dark);font-weight:700;margin-top:14px;text-underline-offset:3px}
     .secondary-link:hover{color:var(--ink)}
+    .windows-panel{margin-top:14px;background:linear-gradient(130deg,#FFF,#F0F8FA);border-color:#D4E6EB}
+    .windows-icon{width:54px;height:54px;flex:none;display:grid;place-items:center;border:1px solid #DCE9F4;border-radius:16px;background:#EAF3FA;color:#28647E}
+    .windows-icon svg{width:30px;height:30px}
+    .windows-panel .primary-btn:not([aria-disabled="true"]){background:#286F83}
+    .windows-panel .primary-btn:hover:not([aria-disabled="true"]){background:#185468}
+    .windows-panel .download-status::before{background:#78A5BC}
+    .windows-spotlight{margin:0 auto 84px;padding:33px;display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:45px;background:#FFFFFFBA;border:1px solid #DAE6E0;border-radius:29px}
+    .windows-copy h2{font-size:clamp(1.7rem,3vw,2.65rem);margin:0 0 15px}
+    .windows-copy p:not(.section-kicker){font-size:.88rem;color:var(--muted);line-height:1.8;margin:0}
+    .windows-copy a{display:inline-block;color:var(--dark);font-size:.84rem;font-weight:700;text-underline-offset:4px;margin-top:18px}
+    .pc-preview{min-width:0;background:#F9FCFA;direction:ltr;border:7px solid #2B3D44;border-bottom-width:16px;border-radius:14px 14px 7px 7px;overflow:hidden;box-shadow:0 19px 45px #183E392E}
+    .pc-top{display:flex;gap:6px;align-items:center;padding:9px;background:#E8F3EE;border-bottom:1px solid #D5E9DE}
+    .pc-top i{width:7px;height:7px;border-radius:50%;background:#B9CFC5}.pc-top b{margin-left:6px;font-size:.58rem;color:#276F5E}
+    .pc-body{display:grid;grid-template-columns:95px minmax(0,1fr);min-height:216px}
+    .pc-side{background:#13554C;color:#D5EDE6;font-size:.55rem;padding:12px 7px}
+    .pc-side strong{display:block;color:white;margin-bottom:15px;font-size:.7rem}
+    .pc-side span{display:block;padding:6px 5px;margin-bottom:3px;border-radius:6px}
+    .pc-side .selected{background:#2B8172;color:white}
+    .pc-content{padding:15px;min-width:0}.pc-content h3{font-size:.9rem;margin:0 0 4px}
+    .pc-content p{color:#657670;font-size:.55rem;margin:0 0 12px}
+    .pc-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+    .pc-stats div{padding:8px 5px;border-radius:8px;background:white;border:1px solid #E1ECE6}
+    .pc-stats small{display:block;color:#708078;font-size:.48rem}.pc-stats b{display:block;color:#147768;font-size:.85rem}
+    .pc-list{margin-top:11px;background:white;border:1px solid #E1ECE6;border-radius:8px;padding:7px 9px}
+    .pc-list div{display:flex;justify-content:space-between;gap:8px;padding:4px 0;font-size:.52rem}
+    .pc-list div+div{border-top:1px solid #EDF3EF}.pc-list b{color:#14806F}
+    .pc-note{grid-column:1/-1;text-align:center;color:#65746B;font-size:.68rem;margin:-17px 0 0}
     .showcase{position:relative;min-height:616px;display:grid;place-items:center;background:linear-gradient(145deg,#DFF4ED 4%,#E8F6EC 52%,#F5E7D4 100%);border:1px solid #D2E7D9;border-radius:40px;overflow:hidden}
     .showcase::before,.showcase::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
     .showcase::before{width:425px;height:425px;inset-inline-end:-185px;top:-200px;border:1px solid #FFFFFFAA;box-shadow:0 0 0 60px #FFFFFF26,0 0 0 120px #FFFFFF20}
@@ -133,6 +160,7 @@
       .hero-copy{max-width:680px}.hero h1{max-width:650px}
       .showcase{width:min(100%,640px);margin-inline:auto;min-height:615px}
       .float.one{inset-inline-end:8%}.float.two{inset-inline-start:8%}
+      .windows-spotlight{grid-template-columns:1fr;gap:22px;margin-top:0}.pc-note{margin:0}
       .features{grid-template-columns:repeat(2,minmax(0,1fr))}
       .feature{min-height:205px}.navlinks{gap:18px}
     }
@@ -144,7 +172,11 @@
       .hero{padding-block:51px 61px;gap:37px}
       h1{font-size:clamp(2.62rem,10.6vw,4.5rem);margin-block:20px 18px;line-height:1.1}
       .lead{font-size:.97rem;line-height:1.85}
-      .download{padding:18px}.download-title{font-size:.87rem}.version{font-size:.61rem;max-width:110px}
+      .download{padding:18px}.windows-icon{width:48px;height:48px}.windows-icon svg{width:26px}
+      .windows-spotlight{padding:20px 15px;border-radius:22px;margin-bottom:60px}
+      .pc-body{grid-template-columns:70px minmax(0,1fr);min-height:186px}.pc-side{padding:8px 4px;font-size:.46rem}.pc-side strong{font-size:.55rem}
+      .pc-content{padding:9px}.pc-stats{gap:4px}.pc-stats div{padding:5px 3px}.pc-stats small{font-size:.42rem}.pc-stats b{font-size:.73rem}
+      .download-title{font-size:.87rem}.version{font-size:.61rem;max-width:110px}
       .showcase{min-height:560px;border-radius:30px}
       .phone{min-height:500px;transform:rotate(-2deg);width:255px}
       [dir="rtl"] .phone{transform:rotate(2deg)}
@@ -170,6 +202,7 @@
     <symbol id="i-expenses" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M7 15h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-bills" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8h6M9 12h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-basket" viewBox="0 0 24 24"><path d="M4 10h16l-2 10H6L4 10ZM9 10l3-7 3 7M8 14v3m4-3v3m4-3v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-windows" viewBox="0 0 24 24"><path d="M3 5.5 11 4v7H3V5.5Zm10-1.8L21 2v9h-8V3.7ZM3 13h8v7l-8-1.4V13Zm10 0h8v9l-8-1.7V13Z" fill="currentColor"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
   <header class="top">
@@ -198,6 +231,16 @@
           <p class="download-status" id="release-status" role="status" aria-live="polite" data-i18n="checking">Checking Android download availability…</p>
           <a class="secondary-link" href="https://github.com/abdallahkhayroun00-crypto/Roomly-download/releases" target="_blank" rel="noopener noreferrer"><span data-i18n="viewReleases">View releases on GitHub</span><svg aria-hidden="true" width="15" height="15"><use href="#i-arrow"/></svg></a>
         </div>
+        <div class="download windows-panel" id="windows-download-panel">
+          <div class="download-top">
+            <span class="windows-icon"><svg aria-hidden="true"><use href="#i-windows"/></svg></span>
+            <div><p class="download-title" data-i18n="windowsTitle">Roomly for Windows</p><p class="download-subtitle" data-i18n="windowsSubtitle">Your home, on your desktop</p></div>
+            <span class="version" id="windows-version">Not released</span>
+          </div>
+          <a class="primary-btn" id="windows-download" aria-disabled="true" tabindex="-1" aria-describedby="windows-status"><svg aria-hidden="true"><use href="#i-download"/></svg><span id="windows-button-label">Coming soon</span></a>
+          <p class="download-status" id="windows-status" role="status" aria-live="polite">Checking Windows download availability…</p>
+          <a class="secondary-link" href="https://github.com/abdallahkhayroun00-crypto/Roomly-download/releases" target="_blank" rel="noopener noreferrer"><span data-i18n="windowsReleases">View Windows releases on GitHub</span><svg aria-hidden="true" width="15" height="15"><use href="#i-arrow"/></svg></a>
+        </div>
         <div class="trust-row"><span><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="trustAndroid">Made for Android</span></span><span><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="trustPreview">Early-access preview</span></span></div>
       </div>
       <div class="showcase" aria-label="Illustrative preview of a Roomly dashboard">
@@ -220,6 +263,22 @@
         <p class="mock-note" data-i18n="mockNote">Concept illustration · Not an actual app screenshot</p>
       </div>
     </section></div>
+    <section class="shell windows-spotlight" id="windows" aria-labelledby="windows-title">
+      <div class="windows-copy">
+        <p class="section-kicker" data-i18n="pcKicker">Your space, a bigger view</p>
+        <h2 id="windows-title" data-i18n="pcTitle">Meet Roomly for Windows.</h2>
+        <p data-i18n="pcBody">A desktop-first layout for your shared home: quick access to tasks, expenses, bills and housemates, with room to see more at once. The Windows download will activate when a real build is published.</p>
+        <a href="#windows-download-panel" data-i18n="pcAction">Check Windows availability ↑</a>
+      </div>
+      <div class="pc-preview" aria-label="Concept illustration of a Roomly desktop dashboard">
+        <div class="pc-top" aria-hidden="true"><i></i><i></i><i></i><b>Roomly</b></div>
+        <div class="pc-body" aria-hidden="true">
+          <div class="pc-side"><strong>Roomly</strong><span class="selected">⌂ Overview</span><span>✓ Tasks</span><span>▤ Expenses</span><span>▥ Bills</span><span>◫ Members</span></div>
+          <div class="pc-content"><h3>Our home</h3><p>Everything you share, organized.</p><div class="pc-stats"><div><small>Tasks done</small><b>8 / 10</b></div><div><small>Expenses</small><b>3</b></div><div><small>Housemates</small><b>4</b></div></div><div class="pc-list"><div><strong>Today's tasks</strong><b>See all</b></div><div><span>✓ Clean the kitchen</span><b>Done</b></div><div><span>○ Take out recycling</span><b>Today</b></div></div></div>
+        </div>
+      </div>
+      <p class="pc-note" data-i18n="pcNote">Concept illustration · Not an actual app screenshot</p>
+    </section>
     <section class="shell features-section" id="features" aria-labelledby="features-title">
       <div class="section-head"><div><p class="section-kicker" data-i18n="featuresKicker">A calmer way to share</p><h2 id="features-title" data-i18n="featuresTitle">The little things, sorted.</h2></div><p class="section-desc" data-i18n="featuresSub">Everything that keeps your shared home running, together in one friendly space.</p></div>
       <div class="features">
@@ -249,12 +308,18 @@
       var repoApi = "https://api.github.com/repos/abdallahkhayroun00-crypto/Roomly-download/releases?per_page=30";
       var download = document.getElementById("download");
       var buttonLabel = document.getElementById("button-label");
+      var winButton = document.getElementById("windows-download");
+      var winLabel = document.getElementById("windows-button-label");
+      var winStatus = document.getElementById("windows-status");
+      var winVersion = document.getElementById("windows-version");
       var statusText = document.getElementById("release-status");
       var version = document.getElementById("version");
       var langButton = document.getElementById("language");
       var language = "en";
       var available = null;
       var state = "checking";
+      var winAvailable = null;
+      var winState = "winChecking";
       var copy = {
         en: {
           navFeatures:"Features",navHow:"How to install",navDownload:"Get Roomly",
@@ -311,6 +376,34 @@
           finalTitle:"دار وحدة. تنظيم واحد.",finalBody:"حمّل Roomly من هنا ملي تكون أول نسخة للأندرويد واجدة.",finalButton:"رجع للتحميل"
         }
       };
+      Object.assign(copy.en, {
+        windowsTitle:"Roomly for Windows",windowsSubtitle:"Your home, on your desktop",
+        windowsReleases:"View Windows releases on GitHub",winPending:"Coming soon",winReady:"Download for Windows",
+        winChecking:"Checking Windows download availability…",
+        winNotReady:"The Windows desktop build hasn't been published yet. The download will appear here when it's ready.",
+        winError:"We couldn't check the Windows download. Please check GitHub releases.",
+        winAvailable:"Windows build available. Download the installer or ZIP and follow the included setup instructions.",
+        pcKicker:"Your space, a bigger view",pcTitle:"Meet Roomly for Windows.",
+        pcBody:"A desktop-first layout for your shared home: quick access to tasks, expenses, bills and housemates, with room to see more at once. The Windows download will activate when a real build is published.",
+        pcAction:"Check Windows availability ↑",pcNote:"Concept illustration · Not an actual app screenshot",
+        trustAndroid:"Android + Windows",
+        stepsFoot:"Android: install the APK. Windows: download the installer or desktop ZIP when published. This page is not an app store.",
+        finalBody:"Choose Android or Windows above. Download links activate only when a public build is available."
+      });
+      Object.assign(copy.ar, {
+        windowsTitle:"Roomly لويندوز",windowsSubtitle:"داركم المنظمة، حتى فالحاسوب",
+        windowsReleases:"شوف إصدارات ويندوز على GitHub",winPending:"قريباً",winReady:"تحميل Roomly لويندوز",
+        winChecking:"كنتحققو واش نسخة ويندوز متوفرة…",
+        winNotReady:"نسخة ويندوز للحاسوب مازال ما تنشراتش. ملي تكون واجدة غادي يبان رابط التحميل هنا.",
+        winError:"ما قدرناش نتحققو من نسخة ويندوز. شوف صفحة الإصدارات على GitHub.",
+        winAvailable:"نسخة ويندوز متوفرة. حمّل ملف التثبيت أو ZIP وتبع تعليمات التثبيت المرفقة.",
+        pcKicker:"داركم على شاشة أكبر",pcTitle:"تعرّف على Roomly لويندوز.",
+        pcBody:"واجهة مصممة للحاسوب باش تشوف المهام والمصاريف والفواتير والسكان فبلاصة وحدة وبمساحة أكبر. رابط ويندوز كيتفعّل ملي تتنشر نسخة حقيقية.",
+        pcAction:"شوف حالة تحميل ويندوز ↑",pcNote:"تصوّر توضيحي · ماشي صورة حقيقية من التطبيق",
+        trustAndroid:"أندرويد + ويندوز",
+        stepsFoot:"أندرويد: ثبّت APK. ويندوز: حمّل ملف التثبيت أو ZIP ملي يتنشر. هادي صفحة تحميل وماشي متجر تطبيقات.",
+        finalBody:"اختار أندرويد أو ويندوز من الفوق. رابط التحميل كيتفعّل غير ملي تتنشر نسخة حقيقية."
+      });
       function render() {
         document.documentElement.lang = language;
         document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
@@ -321,6 +414,9 @@
         langButton.textContent = language === "en" ? "العربية ↗" : "English ↗";
         langButton.setAttribute("aria-pressed", language === "ar" ? "true" : "false");
         buttonLabel.textContent = copy[language][available ? "downloadReady" : "downloadPending"];
+        winLabel.textContent = copy[language][winAvailable ? "winReady" : "winPending"];
+        winStatus.textContent = copy[language][winState];
+        winVersion.textContent = winAvailable ? winAvailable.name : copy[language].versionPending;
         statusText.textContent = copy[language][state];
         version.textContent = available ? available.name : copy[language].versionPending;
       }
@@ -328,6 +424,7 @@
       download.addEventListener("click", function (event) {
         if (!available) event.preventDefault();
       });
+      winButton.addEventListener("click",function(event){if(!winAvailable)event.preventDefault();});
       langButton.addEventListener("click", function () {
         language = language === "en" ? "ar" : "en";
         render();
@@ -351,6 +448,26 @@
             });
             if (apk) {found = {url:apk.browser_download_url, name:release.tag_name || release.name || "Android"};break;}
           }
+          // Android and Windows releases are independent; never link to a missing installer.
+          var winFound = null;
+          for (var j=0;j<releases.length;j++) {
+            var winRelease = releases[j];
+            if (winRelease.draft || !Array.isArray(winRelease.assets)) continue;
+            var installer = winRelease.assets.find(function(asset) {
+              var name = asset.name || "";
+              return (/\.(exe|msi)$/i.test(name) || (/\.zip$/i.test(name) && /windows|win64|win-x64|desktop/i.test(name))) &&
+                typeof asset.browser_download_url === "string" &&
+                /^https:\/\/github\.com\/abdallahkhayroun00-crypto\/Roomly-download\/releases\/download\//.test(asset.browser_download_url);
+            });
+            if (installer) {winFound={url:installer.browser_download_url,name:winRelease.tag_name || winRelease.name || "Windows"};break;}
+          }
+          if (winFound) {
+            winAvailable=winFound;
+            winButton.href=winFound.url;
+            winButton.removeAttribute("aria-disabled");
+            winButton.removeAttribute("tabindex");
+            winState="winAvailable";
+          } else {winState="winNotReady";}
           if (found) {
             available = found;
             download.href = found.url;
@@ -362,7 +479,7 @@
           }
           render();
         })
-        .catch(function () {state = "error";render();});
+        .catch(function () {state = "error";winState="winError";render();});
     }());
   </script>
 </body>
