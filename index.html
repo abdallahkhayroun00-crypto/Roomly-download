@@ -580,7 +580,7 @@
             if (winRelease.draft || !Array.isArray(winRelease.assets)) continue;
             var installer = winRelease.assets.find(function(asset) {
               var name = asset.name || "";
-              return (/\.(exe|msi)$/i.test(name) || (/\.zip$/i.test(name) && /windows|win64|win-x64|desktop/i.test(name))) &&
+              return ((/\.msi$/i.test(name)) || (/\.exe$/i.test(name) && /setup|install/i.test(name)) || (/\.zip$/i.test(name) && /windows|win64|win-x64|desktop/i.test(name))) &&
                 typeof asset.browser_download_url === "string" &&
                 /^https:\/\/github\.com\/abdallahkhayroun00-crypto\/Roomly-download\/releases\/download\//.test(asset.browser_download_url);
             });
