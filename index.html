@@ -123,29 +123,27 @@
         <div>
           <span class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="waitlistBadge">Be first to know</span></span>
           <h2 id="waitlist-title" data-i18n="waitlistTitle">Get an email when Roomly launches.</h2>
-          <p class="intro" data-i18n="waitlistIntro">Leave your email to hear about the first Android test release. No unrelated messages.</p>
-          <p class="hint" data-i18n="waitlistHint">You can unsubscribe using the link in any release email. Launch notices will be in Arabic and English.</p>
+          <p class="intro" data-i18n="waitlistIntro">Enter your email and send a prepared message to request a launch reminder.</p>
+          <p class="hint" data-i18n="waitlistHint">No subscription service required. Just send one email to request a launch reminder.</p>
         </div>
         <div class="signup-card">
-          <form id="waitlist-form" method="post" target="_blank" rel="noopener" aria-describedby="waitlist-status waitlist-privacy">
+          <form id="waitlist-form" aria-describedby="waitlist-status waitlist-privacy">
             <label for="waitlist-email" data-i18n="emailLabel">Your email address</label>
-            <input id="waitlist-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" maxlength="254" required disabled>
-            <input type="hidden" name="embed" value="1">
+            <input id="waitlist-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" maxlength="254" required>
             <label class="consent" for="waitlist-consent">
-              <input type="checkbox" id="waitlist-consent" required disabled>
-              <span data-i18n="consent">I agree to receive Roomly release announcements by email. My address will be processed by Buttondown for this purpose.</span>
+              <input type="checkbox" id="waitlist-consent" required>
+              <span data-i18n="consent">I agree to send my email to the Roomly developer for one launch update.</span>
             </label>
-            <button class="btn btn-primary" id="waitlist-submit" type="submit" disabled><span data-i18n="waitlistSubmit">Notify me at launch</span></button>
+            <button class="btn btn-primary" id="waitlist-submit" type="submit"><span data-i18n="waitlistSubmit">Notify me at launch</span></button>
           </form>
-          <p class="signup-status" id="waitlist-status" role="status" aria-live="polite" data-i18n="waitlistNotConnected">Email signups are not open yet. The developer is connecting the mailing list.</p>
-          <p class="smallprint" id="waitlist-privacy" data-i18n="privacyNote">Your email is sent to Buttondown only when you submit this form. Please confirm your subscription using their email.</p>
+          <p class="signup-status" id="waitlist-status" role="status" aria-live="polite" data-i18n="waitlistReady">Enter your address and tap the button to prepare an email for the developer.</p>
+          <p class="smallprint" id="waitlist-privacy" data-i18n="privacyNote">Your email is not stored here. You must send the prepared message yourself to request a reminder.</p>
         </div>
       </div>
     </section>
     <section class="bottom"><div class="shell bottom-inner"><div><h2 data-i18n="bottomTitle">One home. One easier routine.</h2><p data-i18n="bottomBody">Roomly is being developed for Android. Public test downloads appear here when a build is released.</p></div><a class="outline" href="#download-panel" data-i18n="backToDownload">Back to download</a></div></section>
   </main>
   <footer><div class="shell"><span>© <span id="year">2026</span> Roomly · Live together better.</span><span data-i18n="footer">Made for life under one roof.</span></div></footer>
-  <script src="./waitlist-config.js"></script>
   <script>
     (function () {
       "use strict";
@@ -157,37 +155,43 @@
       var switcher = document.getElementById("language");
       var language = "en";
 
-      // This site never collects/stores subscriber emails itself. The external
-      // subscription endpoint becomes active only after the owner configures it.
+      // Free, serverless for four users; no request exists until they send email.
       var waitlistForm = document.getElementById("waitlist-form");
       var waitlistEmail = document.getElementById("waitlist-email");
       var waitlistConsent = document.getElementById("waitlist-consent");
-      var waitlistSubmit = document.getElementById("waitlist-submit");
       var waitlistStatus = document.getElementById("waitlist-status");
-      var newsletterUsername = typeof window.ROOMLY_WAITLIST_USERNAME === "string" ? window.ROOMLY_WAITLIST_USERNAME.trim() : "";
-      var waitlistConnected = /^[a-zA-Z0-9_-]{2,64}$/.test(newsletterUsername);
-      if (waitlistConnected) {
-        waitlistForm.action = "https://buttondown.com/api/emails/embed-subscribe/" + encodeURIComponent(newsletterUsername);
-        waitlistEmail.disabled = false;
-        waitlistConsent.disabled = false;
-        waitlistSubmit.disabled = false;
-      }
-      waitlistForm.addEventListener("submit",function(event) {
-        if (!waitlistConnected || !waitlistConsent.checked || !waitlistEmail.validity.valid) {
-          event.preventDefault();
-        }
+      var ownerEmail = "abdallah.khayroun1@gmail.com";
+      var mailPrepared = false;
+      waitlistForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!waitlistForm.reportValidity() || !waitlistConsent.checked) return;
+        var subject = "Roomly - Android launch notification request";
+        var body = [
+          "Hello Abdallah,",
+          "",
+          "Please notify me by email when Roomly is available for Android.",
+          "My email address: " + waitlistEmail.value.trim(),
+          "I agree to receive one launch announcement about Roomly.",
+          "Preferred language: " + (language === "ar" ? "Arabic" : "English"),
+          "",
+          "I understand I need to SEND this message to complete my request."
+        ].join("\n");
+        mailPrepared = true;
+        waitlistStatus.textContent = messages[language].waitlistMailPrepared;
+        window.location.href = "mailto:" + ownerEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       });
 
       var available = null;
       var state = "checking";
       var messages = {
         en: {
-          waitlistBadge:"Be first to know",waitlistTitle:"Get an email when Roomly launches.",waitlistIntro:"Leave your email to hear about the first Android test release. No unrelated messages.",
-          waitlistHint:"You can unsubscribe using the link in any release email. Launch notices will be in Arabic and English.",emailLabel:"Your email address",
-          consent:"I agree to receive Roomly release announcements by email. My address will be processed by Buttondown for this purpose.",
-          waitlistSubmit:"Notify me at launch",waitlistNotConnected:"Email signups are not open yet. The developer is connecting the mailing list.",
-          waitlistConnected:"Enter your email and confirm your subscription via the email you receive. The confirmation opens in a new tab.",
-          privacyNote:"Your email is sent to Buttondown only when you submit this form. Please confirm your subscription using their email.",
+          waitlistBadge:"Be first to know",waitlistTitle:"Get an email when Roomly launches.",waitlistIntro:"Enter your address and send a ready-made email to the Roomly developer to request a launch reminder.",
+          waitlistHint:"Free for our small test group. No mailing-list account or subscription service needed. To cancel, reply to your request email.",emailLabel:"Your email address",
+          consent:"I agree to send my email address to the Roomly developer for a one-time launch notification.",
+          waitlistSubmit:"Prepare my reminder email",
+          waitlistReady:"Enter your address and tap the button. Your email app will open with a message ready to send.",
+          waitlistMailPrepared:"Your email app should open now. Please tap Send there — your request is NOT registered until you send the email. If nothing opens, use your email app to write to abdallah.khayroun1@gmail.com.",
+          privacyNote:"Your address is not stored on this website. The developer receives it only if you send the prepared email. No automatic notifications.",
           navBadge:"Android · Early access",eyebrow:"Your shared home, made simpler",hero1:"A better way to",hero2:"live together.",
           lead:"From shared bills to household chores, Roomly helps roommates stay organized in one calm, friendly place.",
           versionPending:"Test version",downloadPending:"Download coming soon",downloadReady:"Download for Android",checking:"Checking if an Android test build is available…",
@@ -201,12 +205,13 @@
           backToDownload:"Back to download",footer:"Made for life under one roof."
         },
         ar: {
-          waitlistBadge:"كون أول واحد يعرف",waitlistTitle:"توصّل بإيميل ملي Roomly يكون واجد.",waitlistIntro:"خلي الإيميل ديالك باش نعلموك ملي تنشر أول نسخة تجريبية للأندرويد. ما غاديش نرسلو ليك رسائل ما عندهاش علاقة بالتطبيق.",
-          waitlistHint:"تقدر تلغي الاشتراك من الرابط اللي كاين فأي رسالة. إشعار الإطلاق غادي يكون بالعربية والإنجليزية.",emailLabel:"الإيميل ديالك",
-          consent:"كنوافق نتوصل بإيميلات كتخص إصدار Roomly. الإيميل ديالي غادي تعالجو خدمة Buttondown غير لهاد الغرض.",
-          waitlistSubmit:"علمني ملي يكون واجد",waitlistNotConnected:"التسجيل بالإيميل مازال ما تحلش. المطوّر باقي كيربط خدمة الإشعارات.",
-          waitlistConnected:"دخل الإيميل ديالك وأكّد الاشتراك من الرسالة اللي غادي توصلك. التأكيد غادي يتحل فصفحة جديدة.",
-          privacyNote:"الإيميل ديالك غادي يتصيفط لـ Buttondown غير ملي تضغط على زر التسجيل. أكّد الاشتراك من الرسالة اللي غادي توصلك.",
+          waitlistBadge:"كون أول واحد يعرف",waitlistTitle:"توصّل بإيميل ملي Roomly يكون واجد.",waitlistIntro:"دخل الإيميل ديالك وصيفط رسالة جاهزة للمطوّر باش يعلمك ملي تنشر نسخة Roomly للأندرويد.",
+          waitlistHint:"حل مجاني لمجموعة صغيرة ديال المجرّبين، بلا اشتراك فخدمة رسائل. باش تلغي الطلب، جاوب على الرسالة اللي صيفطتي.",emailLabel:"الإيميل ديالك",
+          consent:"كنوافق نصيفط الإيميل ديالي لمطوّر Roomly باش يعلمني مرة وحدة ملي يكون التطبيق واجد.",
+          waitlistSubmit:"وجد ليا رسالة التذكير",
+          waitlistReady:"دخل الإيميل ديالك وضغط على الزر. غادي يتحل تطبيق الإيميل برسالة جاهزة خاصك تصيفطها.",
+          waitlistMailPrepared:"خاص تطبيق الإيميل يتحل دابا. ضروري تضغط على «إرسال» تما، حيث الطلب ما تسجّلش حتى تصيفط الرسالة. إلا ما تحل والو، صيفط لــ abdallah.khayroun1@gmail.com مباشرة.",
+          privacyNote:"هاد الموقع ما كيخزّنش الإيميل ديالك. المطوّر كيتوصل به غير إلا صيفطتي الرسالة فعلاً. ما كاينش إرسال تلقائي للإشعارات.",
           navBadge:"أندرويد · نسخة تجريبية",eyebrow:"تنظيم السكن المشترك بطريقة أبسط",hero1:"تشاركو السكن",hero2:"براحة وتنظيم.",
           lead:"من الفواتير والمصاريف المشتركة حتى للمهام المنزلية، Roomly كيجمع ليكم تنظيم الدار فبلاصة وحدة.",
           versionPending:"النسخة التجريبية",downloadPending:"التحميل متاح قريباً",downloadReady:"تحميل التطبيق للأندرويد",checking:"كنتحققو واش كاينة نسخة Android للتحميل…",
@@ -231,7 +236,7 @@
         label.textContent = messages[language][available ? "downloadReady" : "downloadPending"];
         status.textContent = messages[language][state];
         version.textContent = available ? available.name : messages[language].versionPending;
-        waitlistStatus.textContent = messages[language][waitlistConnected ? "waitlistConnected" : "waitlistNotConnected"];
+        waitlistStatus.textContent = messages[language][mailPrepared ? "waitlistMailPrepared" : "waitlistReady"];
       }
       // A disabled link cannot accidentally send someone to a nonexistent APK.
       link.addEventListener("click", function (event) {
