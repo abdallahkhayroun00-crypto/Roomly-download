@@ -1,6 +1,6 @@
 # Roomly — Android & Windows download page
 
-The public, static landing page for **Roomly — Live together better.**
+The public, static landing page for **Roomly — Live together better.** Android and Windows have **separate download sections**: Android appears in the opening mobile hero, while Windows has its own desktop-focused section and independent download button. The six selectable desktop screens are illustrative HTML/CSS design previews using sample data; they are **not** binary screenshots from the concept ZIP, and they do not imply that a Windows build has been published.
 
 Roomly's Flutter application code is kept separately in a private repository. This repository contains **only** the download website and the official, non-sensitive logo artwork. Do not add API keys, signing keystores, passwords, Firebase credentials, private screenshots, or private roommate information.
 
@@ -35,4 +35,4 @@ For a Windows ZIP, recipients must **extract the entire archive**, keep all incl
 
 ## Safety and repository scope
 
-Brand assets in `assets/` are copies of official Roomly SVG artwork from the original app repository. The desktop dashboard shown on the page is a **concept illustration**, not a screenshot of a shipping Windows app. No app source code or private keys are included here.
+Brand assets in `assets/` are copies of official Roomly SVG artwork from the original app repository. The six interactive desktop screens on the page are **illustrative design previews**, not screenshots of a shipping Windows app. No app source code or private keys are included here.
