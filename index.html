@@ -64,33 +64,9 @@
     .download-status::before{content:"";width:7px;height:7px;margin-top:6px;flex:none;border-radius:100px;background:var(--amber)}
     .secondary-link{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;color:var(--dark);font-weight:700;margin-top:14px;text-underline-offset:3px}
     .secondary-link:hover{color:var(--ink)}
-    .windows-panel{margin-top:14px;background:linear-gradient(130deg,#FFF,#F0F8FA);border-color:#D4E6EB}
+    .windows-panel{background:#FFF;border-color:#D4E6EB}
     .windows-icon{width:54px;height:54px;flex:none;display:grid;place-items:center;border:1px solid #DCE9F4;border-radius:16px;background:#EAF3FA;color:#28647E}
     .windows-icon svg{width:30px;height:30px}
-    .windows-panel .primary-btn:not([aria-disabled="true"]){background:#286F83}
-    .windows-panel .primary-btn:hover:not([aria-disabled="true"]){background:#185468}
-    .windows-panel .download-status::before{background:#78A5BC}
-    .windows-spotlight{margin:0 auto 84px;padding:33px;display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:45px;background:#FFFFFFBA;border:1px solid #DAE6E0;border-radius:29px}
-    .windows-copy h2{font-size:clamp(1.7rem,3vw,2.65rem);margin:0 0 15px}
-    .windows-copy p:not(.section-kicker){font-size:.88rem;color:var(--muted);line-height:1.8;margin:0}
-    .windows-copy a{display:inline-block;color:var(--dark);font-size:.84rem;font-weight:700;text-underline-offset:4px;margin-top:18px}
-    .pc-preview{min-width:0;background:#F9FCFA;direction:ltr;border:7px solid #2B3D44;border-bottom-width:16px;border-radius:14px 14px 7px 7px;overflow:hidden;box-shadow:0 19px 45px #183E392E}
-    .pc-top{display:flex;gap:6px;align-items:center;padding:9px;background:#E8F3EE;border-bottom:1px solid #D5E9DE}
-    .pc-top i{width:7px;height:7px;border-radius:50%;background:#B9CFC5}.pc-top b{margin-left:6px;font-size:.58rem;color:#276F5E}
-    .pc-body{display:grid;grid-template-columns:95px minmax(0,1fr);min-height:216px}
-    .pc-side{background:#13554C;color:#D5EDE6;font-size:.55rem;padding:12px 7px}
-    .pc-side strong{display:block;color:white;margin-bottom:15px;font-size:.7rem}
-    .pc-side span{display:block;padding:6px 5px;margin-bottom:3px;border-radius:6px}
-    .pc-side .selected{background:#2B8172;color:white}
-    .pc-content{padding:15px;min-width:0}.pc-content h3{font-size:.9rem;margin:0 0 4px}
-    .pc-content p{color:#657670;font-size:.55rem;margin:0 0 12px}
-    .pc-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-    .pc-stats div{padding:8px 5px;border-radius:8px;background:white;border:1px solid #E1ECE6}
-    .pc-stats small{display:block;color:#708078;font-size:.48rem}.pc-stats b{display:block;color:#147768;font-size:.85rem}
-    .pc-list{margin-top:11px;background:white;border:1px solid #E1ECE6;border-radius:8px;padding:7px 9px}
-    .pc-list div{display:flex;justify-content:space-between;gap:8px;padding:4px 0;font-size:.52rem}
-    .pc-list div+div{border-top:1px solid #EDF3EF}.pc-list b{color:#14806F}
-    .pc-note{grid-column:1/-1;text-align:center;color:#65746B;font-size:.68rem;margin:-17px 0 0}
     .showcase{position:relative;min-height:616px;display:grid;place-items:center;background:linear-gradient(145deg,#DFF4ED 4%,#E8F6EC 52%,#F5E7D4 100%);border:1px solid #D2E7D9;border-radius:40px;overflow:hidden}
     .showcase::before,.showcase::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
     .showcase::before{width:425px;height:425px;inset-inline-end:-185px;top:-200px;border:1px solid #FFFFFFAA;box-shadow:0 0 0 60px #FFFFFF26,0 0 0 120px #FFFFFF20}
@@ -163,7 +139,6 @@
       .hero-copy{max-width:680px}.hero h1{max-width:650px}
       .showcase{width:min(100%,640px);margin-inline:auto;min-height:615px}
       .float.one{inset-inline-end:8%}.float.two{inset-inline-start:8%}
-      .windows-spotlight{grid-template-columns:1fr;gap:22px;margin-top:0}.pc-note{margin:0}
       .features{grid-template-columns:repeat(2,minmax(0,1fr))}
       .feature{min-height:205px}.navlinks{gap:18px}
     }
@@ -176,9 +151,6 @@
       h1{font-size:clamp(2.62rem,10.6vw,4.5rem);margin-block:20px 18px;line-height:1.1}
       .lead{font-size:.97rem;line-height:1.85}
       .download{padding:18px}.windows-icon{width:48px;height:48px}.windows-icon svg{width:26px}
-      .windows-spotlight{padding:20px 15px;border-radius:22px;margin-bottom:60px}
-      .pc-body{grid-template-columns:70px minmax(0,1fr);min-height:186px}.pc-side{padding:8px 4px;font-size:.46rem}.pc-side strong{font-size:.55rem}
-      .pc-content{padding:9px}.pc-stats{gap:4px}.pc-stats div{padding:5px 3px}.pc-stats small{font-size:.42rem}.pc-stats b{font-size:.73rem}
       .download-title{font-size:.87rem}.version{font-size:.61rem;max-width:110px}
       .showcase{min-height:560px;border-radius:30px}
       .phone{min-height:500px;transform:rotate(-2deg);width:255px}
