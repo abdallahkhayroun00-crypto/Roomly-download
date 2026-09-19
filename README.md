@@ -4,6 +4,10 @@ The public, static landing page for **Roomly — Live together better.** Android
 
 Roomly's Flutter application code is kept separately in a private repository. This repository contains **only** the download website and the official, non-sensitive logo artwork. Do not add API keys, signing keystores, passwords, Firebase credentials, private screenshots, or private roommate information.
 
+## Website languages
+
+The page includes a language selector for **English, العربية, Français, Türkçe, and Deutsch**. Switching languages updates the Android and Windows download sections, release states, installation instructions, and the interactive desktop concept, while preserving right-to-left layout for Arabic. This translates the download website itself; it does not change the language settings of the Android or Windows applications.
+
 ## Publish this site with GitHub Pages
 
 1. Go to **Settings → Pages** in this repository.
