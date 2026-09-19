@@ -39,6 +39,9 @@
     .nav-actions{display:flex;align-items:center;gap:12px}
     .lang{display:inline-flex;align-items:center;gap:7px;border:1px solid #D2E3DC;background:#FFFFFFB8;color:#205A50;min-height:40px;border-radius:12px;padding:8px 13px;font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap}
     .lang:hover{background:white}
+    .lang{max-width:128px;min-width:109px;appearance:auto;color-scheme:light;line-height:1.2}
+    .lang option{background:#FFF;color:#205A50}
+    [dir="rtl"] .lang{direction:ltr}
     .nav-cta{background:var(--ink);color:white!important;border-radius:12px;padding:11px 17px;text-decoration:none;font-size:.82rem;font-weight:700;white-space:nowrap}
     .nav-cta:hover{background:var(--deep)}
     .hero-wrap{position:relative;overflow:hidden;isolation:isolate}
@@ -259,7 +262,13 @@
       <a class="brand" href="./" aria-label="Roomly — home"><img src="./assets/roomly-logo-horizontal.svg" width="183" height="46" alt="Roomly — Live together better."></a>
       <div class="navlinks"><a href="#features" data-i18n="navFeatures">Features</a><a href="#how-it-works" data-i18n="navHow">How to install</a><a href="#windows" data-i18n="navWindows">Windows</a></div>
       <div class="nav-actions">
-        <button class="lang" type="button" id="language" aria-label="Switch language" aria-pressed="false">العربية ↗</button>
+        <select class="lang" id="language" aria-label="Select website language" title="Website language">
+          <option value="en" lang="en">English</option>
+          <option value="ar" lang="ar">العربية</option>
+          <option value="fr" lang="fr">Français</option>
+          <option value="tr" lang="tr">Türkçe</option>
+          <option value="de" lang="de">Deutsch</option>
+        </select>
         <a class="nav-cta" href="#download-panel" data-i18n="navDownload">Get Roomly</a>
       </div>
     </nav>
@@ -384,7 +393,7 @@
       var winVersion = document.getElementById("windows-version");
       var statusText = document.getElementById("release-status");
       var version = document.getElementById("version");
-      var langButton = document.getElementById("language");
+      var langSelect = document.getElementById("language");
       var language = "en";
       var available = null;
       var state = "checking";
@@ -500,6 +509,297 @@
         pcNote:"تصوّر تفاعلي لواجهة الحاسوب ببيانات توضيحية · ماشي صورة حقيقية من نسخة منشورة",
         trustAndroid:"مصمّم للأندرويد"
       });
+      // A complete translation dictionary for every public-facing section.
+      Object.assign(copy, {
+  "fr": {
+    "navFeatures": "Fonctionnalités",
+    "navHow": "Installation",
+    "navWindows": "Windows",
+    "navDownload": "Télécharger Roomly",
+    "eyebrow": "Un chez-soi plus agréable, moins de complications.",
+    "hero1": "La colocation,",
+    "hero2": "en toute simplicité.",
+    "lead": "Un espace chaleureux pour tout ce que vous partagez. Organisez les tâches, les dépenses, les factures et les courses pour vivre ensemble plus sereinement.",
+    "downloadTitle": "Roomly pour Android",
+    "downloadSubtitle": "Votre foyer, dans votre poche",
+    "versionPending": "Pas encore disponible",
+    "downloadPending": "Bientôt disponible",
+    "downloadReady": "Télécharger pour Android",
+    "checking": "Vérification du téléchargement Android…",
+    "notReady": "Le fichier APK Android n’a pas encore été publié. Le téléchargement apparaîtra ici dès sa disponibilité.",
+    "error": "Impossible de vérifier le téléchargement pour le moment. Consultez les versions sur GitHub.",
+    "ready": "La version Android est disponible. Téléchargez l’APK et ouvrez-le sur votre téléphone pour l’installer.",
+    "viewReleases": "Voir les versions sur GitHub",
+    "trustAndroid": "Conçu pour Android",
+    "trustPreview": "Version d’essai",
+    "phoneWelcome": "BIENVENUE CHEZ VOUS",
+    "phoneHeading": "Une meilleure journée commence ici.",
+    "phoneShared": "VOTRE ESPACE PARTAGÉ",
+    "phoneHome": "Notre foyer",
+    "phoneTasks": "Tâches du jour",
+    "phoneSeeAll": "Tout voir",
+    "phoneTask1": "Ranger la cuisine",
+    "phoneDone": "Terminé",
+    "phoneTask2": "Sortir le recyclage",
+    "phoneNext": "À suivre",
+    "phoneExpenses": "Dépenses communes",
+    "phoneOverview": "Aperçu",
+    "phoneTabHome": "Accueil",
+    "phoneTabTasks": "Tâches",
+    "phoneTabBills": "Factures",
+    "phoneTabMore": "Plus",
+    "float1title": "Tout est à jour !",
+    "float1desc": "Les tâches du jour sont bien avancées",
+    "float2title": "Mieux ensemble",
+    "float2desc": "Votre foyer, votre rythme",
+    "mockNote": "Illustration conceptuelle · Pas une capture de l’application",
+    "pcKicker": "ROOMLY POUR WINDOWS",
+    "pcTitle1": "Plus d’espace",
+    "pcTitle2": "pour vivre ensemble.",
+    "pcBody": "Gardez les tâches, les dépenses et les factures sous les yeux grâce à un espace de travail conçu pour l’ordinateur, la souris et le clavier.",
+    "pcPoint1": "Tous les détails sous les yeux",
+    "pcPoint2": "Une vue plus claire sur ordinateur",
+    "windowsTitle": "Roomly pour Windows",
+    "windowsSubtitle": "Votre foyer, sur votre ordinateur",
+    "windowsInstallTitle": "Installer Roomly sur Windows",
+    "windowsInstallBody": "Quand la version pour ordinateur sera publiée, téléchargez et lancez le programme d’installation. S’il s’agit d’un fichier ZIP, extrayez tout le dossier, puis lancez Roomly.exe depuis celui-ci. Gardez les autres fichiers avec l’application.",
+    "windowsInstallAction": "État du téléchargement Windows ↑",
+    "windowsReleases": "Voir les versions Windows sur GitHub",
+    "winPending": "Bientôt disponible",
+    "winReady": "Télécharger pour Windows",
+    "winChecking": "Vérification du téléchargement Windows…",
+    "winNotReady": "La version Windows n’a pas encore été publiée. Le téléchargement apparaîtra ici dès sa disponibilité.",
+    "winError": "Impossible de vérifier le téléchargement Windows. Consultez les versions sur GitHub.",
+    "winAvailable": "La version Windows est disponible. Téléchargez le programme d’installation ou le ZIP et suivez les instructions fournies.",
+    "pcGalleryKicker": "Découvrez l’interface",
+    "pcGalleryTitle": "Votre foyer partagé, sur un seul écran.",
+    "pcConcept": "MAQUETTE",
+    "pcSample": "ROOMLY · DONNÉES FICTIVES",
+    "tabDashboard": "Tableau de bord",
+    "tabExpenses": "Dépenses",
+    "tabChores": "Tâches",
+    "tabBills": "Factures",
+    "tabSupplies": "Courses",
+    "tabMembers": "Colocataires",
+    "pcNote": "Maquette interactive pour ordinateur · Données fictives, pas une capture de l’application",
+    "featuresKicker": "Une colocation plus sereine",
+    "featuresTitle": "Les petites choses, bien organisées.",
+    "featuresSub": "Tout ce dont votre foyer a besoin au quotidien, réuni dans un espace simple et agréable.",
+    "f1title": "Des tâches sans désordre",
+    "f1body": "Voyez qui fait quoi et quelles tâches restent à accomplir.",
+    "f2title": "Dépenses communes",
+    "f2body": "Suivez les dépenses partagées et les paiements de chacun.",
+    "f3title": "Les factures au même endroit",
+    "f3body": "Organisez les factures et les paiements sans multiplier les messages.",
+    "f4title": "Les achats du foyer",
+    "f4body": "Créez une liste de courses partagée pour ne rien oublier.",
+    "stepsKicker": "Pour commencer",
+    "stepsTitle": "De cette page à votre foyer.",
+    "stepsSubtitle": "Trois étapes simples dès la publication d’une version d’essai Android.",
+    "s1title": "Télécharger l’APK",
+    "s1body": "Dès qu’une version d’essai sera disponible, le bouton ci-dessus donnera accès au fichier d’installation Android.",
+    "s2title": "Installer sur Android",
+    "s2body": "Ouvrez le fichier téléchargé. Votre téléphone pourrait vous demander d’autoriser l’installation depuis votre navigateur.",
+    "s3title": "Organisez-vous ensemble",
+    "s3body": "Ouvrez Roomly et commencez à organiser votre colocation.",
+    "stepsFoot": "Android : installez l’APK. Windows : téléchargez le programme d’installation ou le ZIP dès sa publication. Ce site n’est pas une boutique d’applications.",
+    "finalTitle": "Votre foyer, au même diapason.",
+    "finalBody": "Choisissez Android ou Windows ci-dessus. Les liens de téléchargement s’activent seulement lorsqu’une version publique est disponible.",
+    "finalButton": "Retour aux téléchargements"
+  },
+  "tr": {
+    "navFeatures": "Özellikler",
+    "navHow": "Nasıl yüklenir?",
+    "navWindows": "Windows",
+    "navDownload": "Roomly’yi indir",
+    "eyebrow": "Daha huzurlu bir ev, daha az uğraş.",
+    "hero1": "Ev arkadaşlığı,",
+    "hero2": "artık çok daha kolay.",
+    "lead": "Ev arkadaşlarıyla paylaştığınız her şey için tek bir sıcak alan. Görevleri, ortak harcamaları, faturaları ve alışverişi düzenleyin; birlikte yaşamak kolaylaşsın.",
+    "downloadTitle": "Android için Roomly",
+    "downloadSubtitle": "Evinizin düzeni cebinizde",
+    "versionPending": "Henüz yayımlanmadı",
+    "downloadPending": "Yakında",
+    "downloadReady": "Android için indir",
+    "checking": "Android indirme durumu kontrol ediliyor…",
+    "notReady": "Android APK dosyası henüz yayımlanmadı. Hazır olduğunda indirme bağlantısı burada görünecek.",
+    "error": "İndirme durumu şu anda kontrol edilemiyor. GitHub sürümlerini inceleyin.",
+    "ready": "Android sürümü hazır. APK dosyasını indirin ve yüklemek için telefonunuzda açın.",
+    "viewReleases": "GitHub sürümlerini görüntüle",
+    "trustAndroid": "Android için tasarlandı",
+    "trustPreview": "Erken erişim",
+    "phoneWelcome": "EVİNE HOŞ GELDİN",
+    "phoneHeading": "Daha güzel bir gün burada başlar.",
+    "phoneShared": "ORTAK YAŞAM ALANINIZ",
+    "phoneHome": "Evimiz",
+    "phoneTasks": "Bugünün görevleri",
+    "phoneSeeAll": "Tümünü gör",
+    "phoneTask1": "Mutfağı düzenle",
+    "phoneDone": "Tamamlandı",
+    "phoneTask2": "Geri dönüşümü çıkar",
+    "phoneNext": "Sıradaki",
+    "phoneExpenses": "Ortak harcamalar",
+    "phoneOverview": "Genel bakış",
+    "phoneTabHome": "Ana sayfa",
+    "phoneTabTasks": "Görevler",
+    "phoneTabBills": "Faturalar",
+    "phoneTabMore": "Diğer",
+    "float1title": "Her şey yolunda!",
+    "float1desc": "Bugünkü görevler planlandığı gibi ilerliyor",
+    "float2title": "Birlikte daha güzel",
+    "float2desc": "Sizin eviniz, sizin düzeniniz",
+    "mockNote": "Tasarım görseli · Uygulamanın gerçek ekran görüntüsü değildir",
+    "pcKicker": "WINDOWS İÇİN ROOMLY",
+    "pcTitle1": "Birlikte yaşamak için",
+    "pcTitle2": "daha fazla alan.",
+    "pcBody": "Görevleri, ortak harcamaları ve faturaları fare ve klavyeye uygun geniş bir masaüstü çalışma alanında bir arada görün.",
+    "pcPoint1": "Tüm ayrıntılar gözünüzün önünde",
+    "pcPoint2": "Bilgisayarda daha net görünüm",
+    "windowsTitle": "Windows için Roomly",
+    "windowsSubtitle": "Ortak eviniz bilgisayarınızda",
+    "windowsInstallTitle": "Windows’a Roomly yükleme",
+    "windowsInstallBody": "Masaüstü sürümü yayımlandığında yükleyiciyi indirip çalıştırın. ZIP dosyasıysa klasörün tamamını çıkarın ve içindeki Roomly.exe dosyasını çalıştırın. Diğer dosyaları uygulamayla birlikte tutun.",
+    "windowsInstallAction": "Windows indirme durumu ↑",
+    "windowsReleases": "GitHub’daki Windows sürümlerini gör",
+    "winPending": "Yakında",
+    "winReady": "Windows için indir",
+    "winChecking": "Windows indirme durumu kontrol ediliyor…",
+    "winNotReady": "Windows masaüstü sürümü henüz yayımlanmadı. Hazır olduğunda indirme bağlantısı burada görünecek.",
+    "winError": "Windows indirme durumu kontrol edilemiyor. GitHub sürümlerini inceleyin.",
+    "winAvailable": "Windows sürümü hazır. Yükleyiciyi veya ZIP dosyasını indirin ve kurulum talimatlarını izleyin.",
+    "pcGalleryKicker": "Yakından inceleyin",
+    "pcGalleryTitle": "Ortak eviniz tek bir ekranda.",
+    "pcConcept": "TASARIM KONSEPTİ",
+    "pcSample": "ROOMLY · ÖRNEK VERİLER",
+    "tabDashboard": "Genel bakış",
+    "tabExpenses": "Harcamalar",
+    "tabChores": "Görevler",
+    "tabBills": "Faturalar",
+    "tabSupplies": "İhtiyaçlar",
+    "tabMembers": "Ev arkadaşları",
+    "pcNote": "Etkileşimli masaüstü tasarım konsepti · Örnek veriler kullanılmıştır; gerçek uygulama ekran görüntüsü değildir",
+    "featuresKicker": "Daha huzurlu bir ev arkadaşlığı",
+    "featuresTitle": "Küçük işler, büyük kolaylık.",
+    "featuresSub": "Ortak evinizin günlük düzeni için gereken her şey tek bir kullanışlı yerde.",
+    "f1title": "Karmaşasız ev işleri",
+    "f1body": "Hangi işi kimin yapacağını ve nelerin kaldığını kolayca takip edin.",
+    "f2title": "Ortak harcamalar",
+    "f2body": "Ortak harcamaları ve ödeme durumlarını net biçimde takip edin.",
+    "f3title": "Tüm faturalar tek yerde",
+    "f3body": "Ev faturalarını ve ödemeleri uzun mesajlaşmalar olmadan düzenleyin.",
+    "f4title": "Evin ihtiyaçları",
+    "f4body": "Hiçbir şeyi unutmamak için ortak alışveriş listesi hazırlayın.",
+    "stepsKicker": "Başlarken",
+    "stepsTitle": "Bu sayfadan ortak evinize.",
+    "stepsSubtitle": "Android test sürümü yayımlandığında üç kolay adım.",
+    "s1title": "APK dosyasını indirin",
+    "s1body": "Test sürümü yayımlandığında yukarıdaki düğme Android kurulum dosyasını açacaktır.",
+    "s2title": "Android’e yükleyin",
+    "s2body": "İndirdiğiniz dosyayı açın. Telefonunuz tarayıcıdan uygulama yüklemeye izin vermenizi isteyebilir.",
+    "s3title": "Birlikte düzenleyin",
+    "s3body": "Roomly’yi açın ve ev arkadaşlarınızla ortak yaşam alanınızı düzenlemeye başlayın.",
+    "stepsFoot": "Android: APK dosyasını yükleyin. Windows: yayımlandığında yükleyiciyi veya masaüstü ZIP dosyasını indirin. Bu sayfa bir uygulama mağazası değildir.",
+    "finalTitle": "Aynı ev, ortak düzen.",
+    "finalBody": "Yukarıdan Android veya Windows’u seçin. İndirme bağlantıları yalnızca herkese açık bir sürüm yayımlandığında etkinleşir.",
+    "finalButton": "İndirmelere dön"
+  },
+  "de": {
+    "navFeatures": "Funktionen",
+    "navHow": "Installation",
+    "navWindows": "Windows",
+    "navDownload": "Roomly herunterladen",
+    "eyebrow": "Mehr Zuhause. Weniger Aufwand.",
+    "hero1": "Zusammen wohnen,",
+    "hero2": "einfacher leben.",
+    "lead": "Ein gemeinsamer Ort für alles, was Mitbewohner teilen. Organisiert Aufgaben, Ausgaben, Rechnungen und Einkäufe – damit das Zusammenleben leichter wird.",
+    "downloadTitle": "Roomly für Android",
+    "downloadSubtitle": "Euer Zuhause, immer dabei",
+    "versionPending": "Noch nicht veröffentlicht",
+    "downloadPending": "Demnächst",
+    "downloadReady": "Für Android herunterladen",
+    "checking": "Android-Download wird geprüft…",
+    "notReady": "Die Android-APK wurde noch nicht veröffentlicht. Sobald sie verfügbar ist, erscheint hier der Download.",
+    "error": "Der Download konnte gerade nicht geprüft werden. Bitte sieh dir die Releases auf GitHub an.",
+    "ready": "Die Android-Version ist verfügbar. Lade die APK herunter und öffne sie auf deinem Smartphone, um sie zu installieren.",
+    "viewReleases": "Releases auf GitHub ansehen",
+    "trustAndroid": "Für Android entwickelt",
+    "trustPreview": "Vorabversion",
+    "phoneWelcome": "WILLKOMMEN ZU HAUSE",
+    "phoneHeading": "Ein guter Tag beginnt hier.",
+    "phoneShared": "EURE WG",
+    "phoneHome": "Unser Zuhause",
+    "phoneTasks": "Heutige Aufgaben",
+    "phoneSeeAll": "Alle ansehen",
+    "phoneTask1": "Küche aufräumen",
+    "phoneDone": "Erledigt",
+    "phoneTask2": "Recycling rausbringen",
+    "phoneNext": "Als Nächstes",
+    "phoneExpenses": "Gemeinsame Ausgaben",
+    "phoneOverview": "Übersicht",
+    "phoneTabHome": "Start",
+    "phoneTabTasks": "Aufgaben",
+    "phoneTabBills": "Rechnungen",
+    "phoneTabMore": "Mehr",
+    "float1title": "Alles im Griff!",
+    "float1desc": "Die heutigen Aufgaben laufen nach Plan",
+    "float2title": "Gemeinsam geht’s besser",
+    "float2desc": "Euer Zuhause, euer Rhythmus",
+    "mockNote": "Konzeptdarstellung · Kein echter Screenshot der App",
+    "pcKicker": "ROOMLY FÜR WINDOWS",
+    "pcTitle1": "Mehr Platz",
+    "pcTitle2": "fürs Zusammenleben.",
+    "pcBody": "Behaltet Aufgaben, gemeinsame Ausgaben und Rechnungen im Blick – mit einer großzügigen Desktop-Oberfläche für Maus und Tastatur.",
+    "pcPoint1": "Alle Details auf einen Blick",
+    "pcPoint2": "Mehr Übersicht am Computer",
+    "windowsTitle": "Roomly für Windows",
+    "windowsSubtitle": "Eure WG auf dem Desktop",
+    "windowsInstallTitle": "Roomly unter Windows installieren",
+    "windowsInstallBody": "Sobald die Desktop-Version veröffentlicht ist, lade das Installationsprogramm herunter und starte es. Bei einer ZIP-Datei entpacke den gesamten Ordner und starte darin Roomly.exe. Lass die übrigen Dateien im selben Ordner.",
+    "windowsInstallAction": "Windows-Downloadstatus ↑",
+    "windowsReleases": "Windows-Releases auf GitHub ansehen",
+    "winPending": "Demnächst",
+    "winReady": "Für Windows herunterladen",
+    "winChecking": "Windows-Download wird geprüft…",
+    "winNotReady": "Die Windows-Desktop-Version wurde noch nicht veröffentlicht. Sobald sie verfügbar ist, erscheint hier der Download.",
+    "winError": "Der Windows-Download konnte nicht geprüft werden. Bitte sieh dir die Releases auf GitHub an.",
+    "winAvailable": "Die Windows-Version ist verfügbar. Lade das Installationsprogramm oder die ZIP-Datei herunter und folge der beiliegenden Anleitung.",
+    "pcGalleryKicker": "Ein genauerer Blick",
+    "pcGalleryTitle": "Eure WG auf einem Bildschirm.",
+    "pcConcept": "DESIGNKONZEPT",
+    "pcSample": "ROOMLY · BEISPIELDATEN",
+    "tabDashboard": "Übersicht",
+    "tabExpenses": "Ausgaben",
+    "tabChores": "Aufgaben",
+    "tabBills": "Rechnungen",
+    "tabSupplies": "Vorräte",
+    "tabMembers": "Mitbewohner",
+    "pcNote": "Interaktives Desktop-Designkonzept · Beispieldaten, kein echter Screenshot der App",
+    "featuresKicker": "Entspannter zusammenwohnen",
+    "featuresTitle": "Die kleinen Dinge, gut organisiert.",
+    "featuresSub": "Alles, was euren WG-Alltag am Laufen hält – übersichtlich an einem Ort.",
+    "f1title": "Haushaltsaufgaben ohne Chaos",
+    "f1body": "Seht, wer was erledigt und welche Aufgaben noch offen sind.",
+    "f2title": "Gemeinsame Ausgaben",
+    "f2body": "Behalte gemeinsame Kosten und den Zahlungsstand im Blick.",
+    "f3title": "Rechnungen an einem Ort",
+    "f3body": "Organisiert Rechnungen und Zahlungen ohne endlose Nachrichten.",
+    "f4title": "Alles, was die WG braucht",
+    "f4body": "Erstellt eine gemeinsame Einkaufsliste, damit nichts vergessen wird.",
+    "stepsKicker": "So geht’s los",
+    "stepsTitle": "Von dieser Seite in eure WG.",
+    "stepsSubtitle": "Drei einfache Schritte, sobald eine Android-Testversion veröffentlicht ist.",
+    "s1title": "APK herunterladen",
+    "s1body": "Sobald eine Testversion verfügbar ist, führt euch die Schaltfläche oben zur Android-Installationsdatei.",
+    "s2title": "Auf Android installieren",
+    "s2body": "Öffnet die heruntergeladene Datei. Euer Smartphone fragt möglicherweise nach der Erlaubnis, Apps aus dem Browser zu installieren.",
+    "s3title": "Gemeinsam organisieren",
+    "s3body": "Öffnet Roomly und organisiert euren WG-Alltag zusammen.",
+    "stepsFoot": "Android: Installiert die APK. Windows: Ladet nach Veröffentlichung das Installationsprogramm oder die Desktop-ZIP herunter. Diese Seite ist kein App-Store.",
+    "finalTitle": "Gemeinsam wohnen, gemeinsam planen.",
+    "finalBody": "Wählt oben Android oder Windows aus. Downloadlinks werden erst aktiv, wenn eine öffentliche Version verfügbar ist.",
+    "finalButton": "Zurück zu den Downloads"
+  }
+});
       function render() {
         document.documentElement.lang = language;
         document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
@@ -507,8 +807,7 @@
           var key = node.getAttribute("data-i18n");
           if (Object.prototype.hasOwnProperty.call(copy[language], key)) node.textContent = copy[language][key];
         });
-        langButton.textContent = language === "en" ? "العربية ↗" : "English ↗";
-        langButton.setAttribute("aria-pressed", language === "ar" ? "true" : "false");
+        langSelect.value = language;
         buttonLabel.textContent = copy[language][available ? "downloadReady" : "downloadPending"];
         winLabel.textContent = copy[language][winAvailable ? "winReady" : "winPending"];
         winStatus.textContent = copy[language][winState];
@@ -572,8 +871,9 @@
       document.querySelectorAll(".desk-tab").forEach(function(button){
         button.addEventListener("click",function(){showDesktopScene(button.getAttribute("data-scene"));});
       });
-      langButton.addEventListener("click", function () {
-        language = language === "en" ? "ar" : "en";
+      langSelect.addEventListener("change", function () {
+        if (!Object.prototype.hasOwnProperty.call(copy,langSelect.value)) return;
+        language = langSelect.value;
         render();
       });
       document.getElementById("year").textContent = String(new Date().getFullYear());
