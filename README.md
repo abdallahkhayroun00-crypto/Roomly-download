@@ -11,19 +11,6 @@ Roomly's Flutter application code is kept separately in a private repository. Th
 3. Select **main**, choose **/(root)**, then **Save**.
 4. After GitHub deploys the site, open https://abdallahkhayroun00-crypto.github.io/Roomly-download/.
 
-## Free email reminders for our small test group
-
-GitHub Pages is a **static** website: it cannot directly collect someone else's email into your own computer or send launch notices in the background. For four roommates, Roomly now uses a straightforward **free, manual email-request flow**, with no third-party signup service, API key, or paid plan.
-
-1. A roommate opens the site, enters their email, ticks the consent checkbox and taps **Prepare my reminder email**.
-2. Their device tries to open their **own email app**, with a message addressed to `abdallah.khayroun1@gmail.com` and their typed email address in the message.
-3. They **must press Send** in that email app. Until they actually send the email, the request has **not** reached you. If the device has no configured email app, ask them to email you at that address directly.
-4. Open your Gmail inbox and find messages with subject **Roomly - Android launch notification request**. Keep the email addresses privately in Gmail or your own local contact list, never in this public GitHub repository.
-5. When you have tested and published an APK, email the consenting roommates **manually** with the Roomly download-page link. For a small group, send individual messages; do not expose everyone's addresses in the To/CC fields.
-6. If someone withdraws their request, don't contact them and remove their address from any list you maintain.
-
-There is **no automatic collection or notification** in this arrangement. Your email address is visible in the public site source as the intended recipient of requests. If you don't want it to be public, change the address in the site's `ownerEmail` setting before sharing the site, or choose a different signup mechanism. The site does not store personal emails.
-
 ## Make the download button work
 
 The site deliberately shows **Download not available yet** until it finds a published GitHub Release in **this repository** with an attached Android `.apk` file. It does not link to a nonexistent APK.
